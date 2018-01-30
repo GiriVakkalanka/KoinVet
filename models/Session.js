@@ -7,6 +7,7 @@ const sessionSchema = new Schema({
   client: [UserSchema],
   vertical: Number,
   price: Number,
+  active: { type: Boolean, default: true },
   dateStarted: Date,
   dateEnded: Date
 });
