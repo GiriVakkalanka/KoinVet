@@ -24,7 +24,8 @@ const userSchema = new Schema({
   clients: [String],
   experts: [String],
   sessions: [SessionSchema],
-  requests: [RequestSchema],
+  requestsReceived: [RequestSchema],
+  requestsSubmitted: [RequestSchema],
   credits: { type: Number, default: 0 }
 });
 

@@ -24,6 +24,9 @@ module.exports = app => {
 
     try {
       const savedRequest = await request.save();
+      const wantedExpert = await User.findOne({ _id: _expert });
+      wantedExpert.requestsReceived.push(savedRequest);
+      await wantedExpert.save();
       res.send(savedRequest);
     } catch (err) {
       res.status(400).send(err);
@@ -43,6 +46,9 @@ module.exports = app => {
 
     try {
       const savedReview = await review.save();
+      const reviewedExpert = await User.findOne({ _id: _expert });
+      reviewedExpert.reviewsReceived.push(savedReview);
+      await reviewedExpert.save();
       res.send(savedReview);
     } catch (err) {
       res.status(400).send(err);
@@ -62,6 +68,9 @@ module.exports = app => {
 
     try {
       const savedRating = await rating.save();
+      const ratedExpert = await User.findOne({ _id: _expert });
+      ratedExpert.reviewsReceived.push(savedRating);
+      await ratedExpert.save();
       res.send(savedRating);
     } catch (err) {
       res.status(400).send(err);
