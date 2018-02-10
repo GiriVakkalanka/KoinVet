@@ -10,6 +10,8 @@ const RequestSchema = require('./Request');
 const userSchema = new Schema({
   googleId: String,
   facebookId: String,
+  twitterId: String,
+  linkedinId: String,
   name: String,
   pic: String,
   type: { type: Number, default: 0 },
