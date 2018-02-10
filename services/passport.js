@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -25,11 +26,11 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      /*
-      console.log('access token ', accessToken);
-      console.log('refresh token ', refreshToken);
-      console.log('profile:', profile);
-      */
+
+      //console.log('access token ', accessToken);
+      //console.log('refresh token ', refreshToken);
+      //console.log('profile:', profile);
+
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {
@@ -37,6 +38,38 @@ passport.use(
       }
       const user = await new User({ googleId: profile.id }).save();
       done(null, user);
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback',
+      profileFields: ['id', 'displayName', 'email'],
+      proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      //console.log('access token ', accessToken);
+      //console.log('refresh token ', refreshToken);
+      console.log('profile:', profile);
+
+      const existingUser = await User.findOne({ facebookId: profile.id });
+
+      if(existingUser) {
+        //console.log(existingUser);
+        return done(null, existingUser);
+      }
+
+
+      const user = await new User({ facebookId: profile.id }).save();
+      //console.log(user);
+      done(null, user);
+
+
+
     }
   )
 );

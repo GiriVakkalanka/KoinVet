@@ -26,7 +26,7 @@ module.exports = app => {
         _expert: acceptedRequest._expert,
         _client: acceptedRequest._client,
         vertical: acceptedRequest.vertical,
-        dateStarted: Date.now();
+        dateStarted: Date.now()
       })
 
       const savedSession = newSession.save();
