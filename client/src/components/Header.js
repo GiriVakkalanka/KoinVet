@@ -15,6 +15,9 @@ class Header extends Component {
           </li>,
           <li key="2">
             <a href="/auth/facebook">Login With Facebook</a>
+          </li>,
+          <li key="3">
+            <a href="/auth/linkedin">Login With LinkedIn</a>
           </li>
         ];
       default:
@@ -43,9 +46,7 @@ class Header extends Component {
           >
             Boilerplate
           </Link>
-          <ul className="right">
-            {this.renderContent()}
-          </ul>
+          <ul className="right">{this.renderContent()}</ul>
         </div>
       </nav>
     );

@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -27,7 +27,6 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-
       //console.log('access token ', accessToken);
       //console.log('refresh token ', refreshToken);
       //console.log('profile:', profile);
@@ -59,20 +58,46 @@ passport.use(
 
       const existingUser = await User.findOne({ facebookId: profile.id });
 
-      if(existingUser) {
+      if (existingUser) {
         //console.log(existingUser);
         return done(null, existingUser);
       }
 
-
       const user = await new User({ facebookId: profile.id }).save();
       //console.log(user);
       done(null, user);
-
     }
   )
 );
 
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: keys.linkedinClientID,
+      clientSecret: keys.linkedinClientSecret,
+      callbackURL: '/auth/linkedin/callback',
+      scoope: ['r_emailaddress', 'r_basicprofile'],
+      state: true,
+      proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      process.nextTick(async () => {
+        const existingUser = await User.findOne({ linkedinId: profile.id });
+
+        if (existingUser) {
+          //console.log(existingUser);
+          return done(null, existingUser);
+        }
+
+        const user = await new User({ linkedinId: profile.id }).save();
+        //console.log(user);
+        return done(null, user);
+      });
+    }
+  )
+);
+
+/*
 passport.use(
   new TwitterStrategy(
     {
@@ -96,3 +121,4 @@ passport.use(
     }
   )
 )
+*/
