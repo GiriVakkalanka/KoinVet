@@ -7,9 +7,8 @@ const SenseiApplication = () => {
     <div style={{ textAlign: 'center' }}>
       <PageHeader style={{ textAlign: 'center' }}>
         Sensei Application
-        <ApplicationNavigator />
       </PageHeader>
-      Congrats
+      <ApplicationNavigator />
       <div>
         <Button href="/">Go Back</Button>
       </div>
