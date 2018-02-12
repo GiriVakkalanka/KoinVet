@@ -9,6 +9,8 @@ module.exports = {
   facebookClientSecret: process.env.FACEBOOK_CLIENT_SECRET,
   twitterConsumerKey: process.env.TWITTER_CONSUMER_KEY,
   twitterConsumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  linkedinClientID: process.env.LINKEDIN_CLIENT_ID,
+  linkedinClientSecret: process.env.LINKEDIN_CLIENT_SECRET,
   sendGridKey: process.env.SEND_GRID_KEY,
   redirectDomain: process.env.REDIRECT_DOMAIN
 };
