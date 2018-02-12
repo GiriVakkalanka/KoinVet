@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, PageHeader } from 'react-bootstrap';
+import { PageHeader } from 'react-bootstrap';
 import ApplicationNavigator from './ApplicationNavigator';
 
 const SenseiApplication = () => {
@@ -9,9 +9,6 @@ const SenseiApplication = () => {
         Sensei Application
       </PageHeader>
       <ApplicationNavigator />
-      <div>
-        <Button href="/">Go Back</Button>
-      </div>
     </div>
   );
 };

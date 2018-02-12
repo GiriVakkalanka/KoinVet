@@ -6,8 +6,8 @@ import Landing from './Landing';
 //import Header from './Header';
 import BootstrapHeader from './BootstrapHeader';
 import SenseiApplication from './SenseiApplication';
-import Dashboard from './Dashboard';
-import SurveyNew from './surveys/SurveyNew';
+//import Dashboard from './Dashboard';
+//import SurveyNew from './surveys/SurveyNew';
 
 class App extends Component {
   componentDidMount() {
@@ -25,8 +25,6 @@ class App extends Component {
               path="/sensei_application"
               component={SenseiApplication}
             />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
           </div>
         </BrowserRouter>
       </div>

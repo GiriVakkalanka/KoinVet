@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavItem, Nav } from 'react-bootstrap';
+import { NavItem, Nav, Button } from 'react-bootstrap';
 import ChooseExpertise from './ChooseExpertise';
 import BasicInformation from './BasicInformation';
 import ProfessionalLinks from './ProfessionalLinks';
@@ -15,6 +15,23 @@ class ApplicationNavigator extends Component {
     const selection = parseInt(`${selectedKey}`, 10);
 
     this.setState({ value: selection });
+  }
+
+  handlePrev() {
+    let selection = this.state.value;
+    selection--;
+    if (selection <= 4 || selection >= 1) {
+      this.setState({ value: selection });
+    }
+    //console.log(this.state.value);
+  }
+
+  handleNext() {
+    let selection = this.state.value;
+    selection++;
+    if (selection <= 4 || selection >= 1) {
+      this.setState({ value: selection });
+    }
   }
 
   handleFormChange() {
@@ -43,10 +60,26 @@ class ApplicationNavigator extends Component {
         >
           <NavItem eventKey={1}>Choose Expertise</NavItem>
           <NavItem eventKey={2}>Basic Information</NavItem>
-          <NavItem eventKey={3}>ProfessionalLinks</NavItem>
+          <NavItem eventKey={3}>Professional Links</NavItem>
           <NavItem eventKey={4}>Thank You!</NavItem>
         </Nav>
         <div>{this.handleFormChange()}</div>
+        <div>
+          <Button
+            onClick={() => {
+              this.handlePrev();
+            }}
+          >
+            Prev
+          </Button>
+          <Button
+            onClick={() => {
+              this.handleNext();
+            }}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     );
   }
