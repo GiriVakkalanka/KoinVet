@@ -10,7 +10,7 @@ class ExpertiseGalleryItem extends Component {
 
   renderButton() {
     //console.log(this.state.buttonValue);
-    if (this.props.application.includes(this.props.title)) {
+    if (this.props.application.includes(this.props.title[0])) {
       return 'Deselect';
     } else {
       return 'Select';
@@ -18,16 +18,16 @@ class ExpertiseGalleryItem extends Component {
   }
 
   handleClick() {
-    if (this.props.application.includes(this.props.title)) {
+    if (this.props.application.includes(this.props.title[0])) {
       //console.log(this.props.title);
       //this.setState({ buttonValue: false });
-      this.props.removeExpertise(this.props.title);
+      this.props.removeExpertise(this.props.title[0]);
       console.log(this.props.application);
     } else {
       //console.log(this.props.title);
       //this.setState({ buttonValue: true });
 
-      this.props.addExpertise(this.props.title);
+      this.props.addExpertise(this.props.title[0]);
       console.log(this.props.application);
       //console.log(this.state.buttonValue);
     }
@@ -42,11 +42,10 @@ class ExpertiseGalleryItem extends Component {
           }}
         >
           <Panel.Heading>
-            <h3>{this.props.title}</h3>
+            <h4>{this.props.title[0]}</h4>
           </Panel.Heading>
           <Panel.Body>
-            <h1>Feature</h1>
-            <p>Benefit</p>
+            <h1>{this.props.title[1]}</h1>
           </Panel.Body>
         </Panel>
       </div>
