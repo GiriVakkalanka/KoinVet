@@ -1,5 +1,7 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
+const Application = mongoose.model('application');
 
 module.exports = app => {
   app.get(
@@ -13,7 +15,7 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/');
+      res.redirect('/sensei_application');
     }
   );
 
@@ -23,7 +25,7 @@ module.exports = app => {
     '/auth/facebook/callback',
     passport.authenticate('facebook'),
     (req, res) => {
-      res.redirect('/');
+      res.redirect('/sensei_application');
     }
   );
 
@@ -35,7 +37,7 @@ module.exports = app => {
     '/auth/linkedin/callback',
     passport.authenticate('linkedin'),
     (req, res) => {
-      res.redirect('/');
+      res.redirect('/sensei_application');
     }
   );
 
@@ -45,7 +47,7 @@ module.exports = app => {
     '/auth/twitter/callback',
     passport.authenticate('twitter'),
     (req, res) => {
-      res.redirect('/');
+      res.redirect('/sensei_application');
     }
   );
 
@@ -59,6 +61,25 @@ module.exports = app => {
   });
 
   app.post('/api/submit_application', requireLogin, async (req, res) => {
-    console.log('hi');
+    //console.log('hi');
+    //const { links, expertise } = req.body;
+    const expertise = req.body[0];
+    const links = req.body[1];
+
+    const application = new Application({
+      expertise,
+      links,
+      userRecord: req.user,
+      _user: req.user.id,
+      dateCreated: Date.now()
+    });
+
+    try {
+      await application.save();
+      res.send(application);
+      //console.log(item);
+    } catch (err) {
+      res.status(400).send(err);
+    }
   });
 };

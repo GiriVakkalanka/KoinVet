@@ -8,8 +8,9 @@ import * as actions from '../actions';
 class ChooseExpertise extends Component {
   //state = [];
   componentDidMount() {
-    this.props.getExpertise();
+    //this.props.getExpertise();
     //console.log(this.props.application);
+    //console.log(this.props.auth);
   }
 
   renderJumbo() {
@@ -21,19 +22,19 @@ class ChooseExpertise extends Component {
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1> What is your area of expertise?</h1>
-        <h2>Choose all that apply.</h2>
+        <h1> What are your areas of expertise?</h1>
         <Jumbotron>
           <div>{this.renderJumbo()}</div>
         </Jumbotron>
+        <h2>Choose all that apply</h2>
         <ExpertiseGallery />
       </div>
     );
   }
 }
 
-function mapStateToProps({ application }) {
-  return { application };
+function mapStateToProps({ application, auth }) {
+  return { application, auth };
 }
 
 export default connect(mapStateToProps, actions)(ChooseExpertise);

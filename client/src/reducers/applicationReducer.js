@@ -1,4 +1,8 @@
-import { ADD_EXPERTISE, REMOVE_EXPERTISE } from '../actions/types';
+import {
+  ADD_EXPERTISE,
+  REMOVE_EXPERTISE,
+  SUBMIT_APPLICATION
+} from '../actions/types';
 //import { defaultState } from './defaultState.js';
 
 export default function(state = [], action) {
@@ -17,7 +21,8 @@ export default function(state = [], action) {
         }
       }
       return state;
-    //console.log(action.payload);
+    case SUBMIT_APPLICATION:
+      return state;
     default:
       //console.log(action.payload);
       return state;

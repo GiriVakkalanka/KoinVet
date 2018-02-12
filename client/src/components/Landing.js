@@ -1,19 +1,13 @@
 import React from 'react';
 import { Button, Jumbotron } from 'react-bootstrap';
 import LandingGallery from './LandingGallery';
+import Logo from '../images/logo10.png';
 //import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <Jumbotron>
-        <h1> MyCryptoSensei </h1>
-        <p>
-          MyCryptoSensei connects you to safe and reliable experts for all your
-          Crypto advice regarding on-boarding, whitepapers, valuation, and tax
-        </p>
-      </Jumbotron>
-
+      <img src={Logo} />
       <div>
         <LandingGallery />
       </div>

@@ -9,27 +9,23 @@ class GalleryItem extends Component {
     //const popover = <GalleryItemOverlay />;
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1>GalleryItem</h1>
         <Panel
           onClick={() => {
             this.setState({ showModal: true });
           }}
         >
+          <Panel.Heading>
+            <h1>{this.props.header}</h1>
+          </Panel.Heading>
           <Panel.Body>
-            <h1>Feature</h1>
-            <p>Benefit</p>
+            <h3>{this.props.sentence}</h3>
           </Panel.Body>
-          <Button
-            onClick={() => {
-              this.setState({ showModal: true });
-            }}
-          >
-            Button
-          </Button>
         </Panel>
         <GalleryItemModal
           showModal={this.state.showModal}
           closeModal={() => this.setState({ showModal: false })}
+          title={this.props.header}
+          body={this.props.body}
         />
       </div>
     );

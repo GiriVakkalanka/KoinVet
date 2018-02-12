@@ -12,24 +12,25 @@ class BasicInformation extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <h1>Choose your service to log in</h1>
-
-        <Col xs={12}>
-          <Row>
-            <a href="/auth/facebook">
-              <img src={fb} alt="fb" />
-            </a>
-          </Row>
-          <Row>
-            <a href="/auth/google">
-              <img src={google} alt="google" />
-            </a>
-          </Row>
-          <Row>
-            <a href="/auth/linkedin">
-              <img src={linkedin} alt="linkedin" />
-            </a>
-          </Row>
-        </Col>
+        <div style={{ marginBottom: '200px' }}>
+          <Col xs={12}>
+            <Row>
+              <a href="/auth/facebook">
+                <img src={fb} alt="fb" />
+              </a>
+            </Row>
+            <Row>
+              <a href="/auth/google">
+                <img src={google} alt="google" />
+              </a>
+            </Row>
+            <Row>
+              <a href="/auth/linkedin">
+                <img src={linkedin} alt="linkedin" />
+              </a>
+            </Row>
+          </Col>
+        </div>
       </div>
     );
   }

@@ -48,13 +48,6 @@ class ExpertiseGalleryItem extends Component {
             <h1>Feature</h1>
             <p>Benefit</p>
           </Panel.Body>
-          <Button
-            onClick={() => {
-              this.handleClick();
-            }}
-          >
-            {this.renderButton()}
-          </Button>
         </Panel>
       </div>
     );
@@ -66,3 +59,13 @@ function mapStateToProps({ application }) {
 }
 
 export default connect(mapStateToProps, actions)(ExpertiseGalleryItem);
+
+/*
+<Button
+  onClick={() => {
+    this.handleClick();
+  }}
+>
+  {this.renderButton()}
+</Button>
+*/

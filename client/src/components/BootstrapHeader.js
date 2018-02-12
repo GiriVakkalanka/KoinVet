@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import { Link } from 'react-router-dom';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { Nav, NavItem, Navbar, Image } from 'react-bootstrap';
+import logo from '../images/coinChar.png';
 //import Payments from './Payments';
 
 class BootstrapHeader extends Component {
@@ -40,9 +41,7 @@ class BootstrapHeader extends Component {
     return (
       <Navbar inverse>
         <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#brand">React-Bootstrap</a>
-          </Navbar.Brand>
+          <Navbar.Brand>MyCryptoSensei</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Nav pullRight>{this.renderContent()}</Nav>

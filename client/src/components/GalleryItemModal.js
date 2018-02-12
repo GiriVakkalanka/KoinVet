@@ -13,17 +13,18 @@ class GalleryItemModal extends Component {
       >
         <div style={{ textAlign: 'center' }}>
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">Title</Modal.Title>
+            <Modal.Title id="contained-modal-title-lg">
+              {this.props.title}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Modal Header</h4>
-            <p>Modal Body</p>
+            <p>{this.props.body}</p>
             <Button
               onClick={() => {
                 this.props.closeModal();
               }}
             >
-              Button
+              Close
             </Button>
           </Modal.Body>
         </div>

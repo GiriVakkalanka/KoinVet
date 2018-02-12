@@ -12,6 +12,7 @@ require('./models/Review');
 require('./models/Session');
 require('./models/Request');
 require('./services/passport');
+require('./models/Application');
 
 mongoose.connect(keys.mongoURI);
 

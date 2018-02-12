@@ -13,14 +13,24 @@ import {
 } from 'react-bootstrap';
 
 class ProfessionalLinks extends Component {
+  componentDidMount() {
+    console.log(this.props.application);
+  }
   handleSubmit() {
-    const urls = {
-      linkOne: findDOMNode(this.refs.linkOne).value,
-      linkTwo: findDOMNode(this.refs.linkTwo).value,
-      linkThree: findDOMNode(this.refs.linkThree).value
-    };
-    //this.props.postBooks(book);
-    console.log(urls);
+    const linkOne = findDOMNode(this.refs.linkOne).value;
+    const linkTwo = findDOMNode(this.refs.linkTwo).value;
+    const linkThree = findDOMNode(this.refs.linkThree).value;
+
+    const links = [linkOne, linkTwo, linkThree];
+    //console.log(links);
+
+    const expertise = this.props.application;
+    console.log(expertise);
+
+    const application = [expertise, links];
+    console.log(application);
+
+    this.props.submitApplication(application);
   }
 
   render() {
@@ -56,7 +66,13 @@ class ProfessionalLinks extends Component {
                   ref="linkThree"
                 />
               </FormGroup>
-              <Button onClick={this.handleSubmit.bind(this)}>Submit</Button>
+              <Button
+                bsStyle="primary"
+                bsSize="large"
+                onClick={this.handleSubmit.bind(this)}
+              >
+                Submit Application!
+              </Button>
             </Panel>
           </Well>
         </Col>
@@ -65,8 +81,8 @@ class ProfessionalLinks extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, application }) {
+  return { auth, application };
 }
 
 export default connect(mapStateToProps, actions)(ProfessionalLinks);

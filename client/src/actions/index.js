@@ -3,7 +3,8 @@ import {
   FETCH_USER,
   ADD_EXPERTISE,
   REMOVE_EXPERTISE,
-  GET_EXPERTISE
+  GET_EXPERTISE,
+  SUBMIT_APPLICATION
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -35,4 +36,10 @@ export const removeExpertise = expertise => {
 
 export const getExpertise = () => {
   return { type: GET_EXPERTISE, payload: null };
+};
+
+export const submitApplication = application => async dispatch => {
+  const res = await axios.post('/api/submit_application', application);
+  //history.push('/sensei_application');
+  dispatch({ type: SUBMIT_APPLICATION, payload: res.data });
 };

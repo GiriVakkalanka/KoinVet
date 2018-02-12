@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavItem, Nav, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import ChooseExpertise from './ChooseExpertise';
 import BasicInformation from './BasicInformation';
 import ProfessionalLinks from './ProfessionalLinks';
@@ -37,9 +39,9 @@ class ApplicationNavigator extends Component {
   handleFormChange() {
     switch (this.state.value) {
       case 1:
-        return <ChooseExpertise />;
-      case 2:
         return <BasicInformation />;
+      case 2:
+        return <ChooseExpertise />;
       case 3:
         return <ProfessionalLinks />;
       case 4:
@@ -53,19 +55,21 @@ class ApplicationNavigator extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <Nav
-          bsStyle="tabs"
+          bsStyle="pills"
           justified
           activeKey={this.state.value}
           onSelect={key => this.handleSelect(key)}
         >
-          <NavItem eventKey={1}>Choose Expertise</NavItem>
-          <NavItem eventKey={2}>Basic Information</NavItem>
+          <NavItem eventKey={1}>Basic Information</NavItem>
+          <NavItem eventKey={2}>Choose Expertise</NavItem>
           <NavItem eventKey={3}>Professional Links</NavItem>
           <NavItem eventKey={4}>Thank You!</NavItem>
         </Nav>
         <div>{this.handleFormChange()}</div>
         <div>
           <Button
+            bsStyle="warning"
+            bsSize="large"
             onClick={() => {
               this.handlePrev();
             }}
@@ -73,6 +77,8 @@ class ApplicationNavigator extends Component {
             Prev
           </Button>
           <Button
+            bsStyle="warning"
+            bsSize="large"
             onClick={() => {
               this.handleNext();
             }}
@@ -85,4 +91,8 @@ class ApplicationNavigator extends Component {
   }
 }
 
-export default ApplicationNavigator;
+function mapStateToProps({ application, auth }) {
+  return { application, auth };
+}
+
+export default connect(mapStateToProps, actions)(ApplicationNavigator);
