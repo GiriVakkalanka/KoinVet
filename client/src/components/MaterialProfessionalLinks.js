@@ -49,14 +49,14 @@ class ProfessionalLinks extends Component {
   render() {
     const question = [
       {
-        headline: 'How would you like to login?',
-        subtitle: 'Choose a service to provide basic information.'
+        headline: 'What do you do?',
+        subtitle: 'Send us any three links that best describe your work.'
       }
     ];
 
     return (
       <div className="card grey darken-4">
-        <div style={{ textAlign: 'center' }}>
+        <div>
           <Col xs={12}>
             <div> {this.renderQuestionCard(question)} </div>
 

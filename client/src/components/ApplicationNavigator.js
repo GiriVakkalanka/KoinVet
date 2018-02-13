@@ -5,25 +5,52 @@ import * as actions from '../actions';
 //import ChooseExpertise from './ChooseExpertise';
 //import BasicInformation from './BasicInformation';
 //import ProfessionalLinks from './ProfessionalLinks';
-import ThankYou from './ThankYou';
 import { Link } from 'react-router-dom';
+import ThankYou from './ThankYou';
 
 class ApplicationNavigator extends Component {
+  renderContent() {
+    return [
+      <li key="1">
+        <Link
+          className="btn yellow accent-2 black-text"
+          to="/sensei_application/basic_info"
+        >
+          Basic info
+        </Link>
+      </li>,
+      <li key="2">
+        <Link
+          className="btn yellow accent-2 black-text"
+          to="/sensei_application/expertise"
+        >
+          Expertise
+        </Link>
+      </li>,
+      <li key="3">
+        <Link
+          className="btn yellow accent-2 black-text"
+          to="/sensei_application/professional_links"
+        >
+          Pro Links
+        </Link>
+      </li>,
+      <li key="4">
+        <Link
+          className="btn yellow accent-2 black-text"
+          to="/sensei_application/thanks"
+        >
+          Thanks!
+        </Link>
+      </li>
+    ];
+  }
+
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
-          <div className="col s12">
-            <a href="#!" className="breadcrumb">
-              First
-            </a>
-            <a href="#!" className="breadcrumb">
-              Second
-            </a>
-            <a href="#!" className="breadcrumb">
-              Third
-            </a>
-          </div>
+        <div className="nav-wrapper  grey darken-4">
+          <ul>{this.renderContent()}</ul>
         </div>
       </nav>
     );

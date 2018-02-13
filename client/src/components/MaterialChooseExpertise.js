@@ -10,6 +10,14 @@ import * as actions from '../actions';
 //import Expertise4 from '../images/Expertise4.png';
 
 class MaterialChooseExpertise extends Component {
+  renderButton(expertise) {
+    if (this.props.application.includes(expertise)) {
+      return (
+        <button className="btn blue accent-1 black-text"> Deselect </button>
+      );
+    }
+    return <button className="btn yellow accent-2 black-text"> Select </button>;
+  }
   renderExpertiseChoices(content) {
     return _.map(content, item => {
       return (
@@ -22,11 +30,7 @@ class MaterialChooseExpertise extends Component {
                   <h4>{item.subtitle}</h4>
                 </div>
               </div>
-              <div className="card-action">
-                <button className="btn yellow accent-2 black-text">
-                  Select
-                </button>
-              </div>
+              <div className="card-action">{this.renderButton()}</div>
             </div>
           </div>
         </div>

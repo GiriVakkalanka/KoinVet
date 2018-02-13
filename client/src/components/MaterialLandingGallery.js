@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 //import GalleryItem from './GalleryItem';
 //import { Row, Col } from 'react-bootstrap';
@@ -16,9 +17,11 @@ class MaterialLandingGallery extends Component {
               </div>
             </div>
             <div className="card-action">
-              <button className="btn btn-large yellow accent-2 black-text">
-                Join Now
-              </button>
+              <Link to="/sensei_application/basic_info">
+                <button className="btn btn-large yellow accent-2 black-text">
+                  Join Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
