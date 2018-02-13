@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import newGoogle from '../images/newGoogle.png';
@@ -8,31 +9,56 @@ import newLinkedin from '../images/newLinkedin.png';
 import { Row, Col } from 'react-bootstrap';
 
 class MaterialBasicInformation extends Component {
-  render() {
-    return (
-      <div className="row">
-        <div className="col">
-          <div className="card s3 grey darken-4 center-align">
-            <div>
-              <a href="/auth/facebook">
-                <img src={newFb} alt="fb" />
-              </a>
-            </div>
-
-            <div>
-              <a href="/auth/google">
-                <img src={newGoogle} alt="google" />
-              </a>
-            </div>
-            <div>
-              <a href="/auth/linkedin">
-                <img src={newLinkedin} alt="linkedin" />
-              </a>
+  renderQuestionCard(content) {
+    return _.map(content, item => {
+      return (
+        <div className="row">
+          <div key={item.number} className="col s12">
+            <div className="card grey darken-4">
+              <div className="card-content white-text">
+                <div>
+                  <h1>{item.headline}</h1>
+                  <h3>{item.subtitle}</h3>
+                </div>
+              </div>
+              <div className="center-align">
+                <div className="row">
+                  <a href="/auth/facebook">
+                    <img src={newFb} alt="fb" />
+                  </a>
+                </div>
+                <div className="row">
+                  <a href="/auth/google">
+                    <img src={newGoogle} alt="google" />
+                  </a>
+                </div>
+                <div className="row">
+                  <a href="/auth/linkedin">
+                    <img src={newLinkedin} alt="linkedin" />
+                  </a>
+                </div>
+              </div>
+              <div className="card-action">
+                <button className="btn-large yellow accent-2 black-text">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    });
+  }
+
+  render() {
+    const question = [
+      {
+        headline: 'How would you like to login?',
+        subtitle: 'Choose a service to provide basic information.'
+      }
+    ];
+
+    return <div className="row">{this.renderQuestionCard(question)} </div>;
   }
 }
 
