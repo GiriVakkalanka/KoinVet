@@ -6,7 +6,7 @@ const LandingGallery = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <h2>Connect with safe and reliable experts for all your crypto needs.</h2>
-      <h3>We are currently in stealth mode and evaluating experts.</h3>
+      <h2>We are currently in stealth mode and evaluating experts.</h2>
       <h1>Apply to become an expert today!</h1>
       <p>Tap anywhere to learn more</p>
       <Row>

@@ -7,7 +7,7 @@ const SenseiApplication = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <PageHeader style={{ textAlign: 'center' }}>
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
         Sensei Application
       </PageHeader>
       <ApplicationNavigator />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Panel } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import GalleryItemModal from './GalleryItemModal';
 
 class GalleryItem extends Component {

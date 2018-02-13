@@ -2,49 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
+import logo from '../images/coinChar2.png';
 
 class Header extends Component {
   renderContent() {
-    switch (this.props.auth) {
-      case null:
-        return;
-      case false:
-        return [
-          <li key="1">
-            <a href="/auth/google">Login With Google</a>
-          </li>,
-          <li key="2">
-            <a href="/auth/facebook">Login With Facebook</a>
-          </li>,
-          <li key="3">
-            <a href="/auth/linkedin">Login With LinkedIn</a>
-          </li>
-        ];
-      default:
-        return [
-          <li key="1">
-            <Payments />
-          </li>,
-          <li key="3" style={{ margin: '0 10px' }}>
-            Credits: {this.props.auth.credits}
-          </li>,
-          <li key="2">
-            <a href="/api/logout">Logout</a>
-          </li>
-        ];
-    }
+    return (
+      <li style={{ margin: '0 20px 0 0 ' }}>
+        <button className="btn yellow accent-2 black-text">Home</button>
+      </li>
+    );
   }
 
   render() {
     //console.log(this.props);
     return (
       <nav>
-        <div className="nav-wrapper">
-          <Link
-            to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
-          >
-            Boilerplate
+        <div className="grey darken-4 nav-wrapper">
+          <Link to={'/'} className="left brand-logo">
+            <img src={logo} />
           </Link>
           <ul className="right">{this.renderContent()}</ul>
         </div>

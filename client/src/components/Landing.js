@@ -1,21 +1,18 @@
 import React from 'react';
-import { Button, Jumbotron } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 import LandingGallery from './LandingGallery';
-import Logo from '../images/logo10.png';
+import MaterialLandingGallery from './MaterialLandingGallery';
+import Logo from '../images/logo15.png';
 //import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <img src={Logo} />
-      <div>
-        <LandingGallery />
+    <div>
+      <div style={{ textAlign: 'center' }}>
+        <img style={{ margin: '20px' }} src={Logo} alt="logo" />
       </div>
-
       <div>
-        <Button bsStyle="primary" bsSize="large" href="/sensei_application">
-          Apply Now!
-        </Button>
+        <MaterialLandingGallery />
       </div>
     </div>
   );
