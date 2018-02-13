@@ -3,11 +3,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Landing from './Landing';
-import Header from './Header';
+//import Header from './Header';
 //import BootstrapHeader from './BootstrapHeader';
 import SenseiApplication from './SenseiApplication';
 import MaterialChooseExpertise from './MaterialChooseExpertise';
 import MaterialBasicInformation from './MaterialBasicInformation';
+import MaterialProfessionalLinks from './MaterialProfessionalLinks';
 //import Dashboard from './Dashboard';
 //import SurveyNew from './surveys/SurveyNew';
 
@@ -24,7 +25,7 @@ class App extends Component {
             <Route
               exact
               path="/sensei_application"
-              component={MaterialBasicInformation}
+              component={SenseiApplication}
             />
           </div>
         </BrowserRouter>

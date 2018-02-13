@@ -4,15 +4,7 @@ import Logo from '../images/logo10.png';
 import ApplicationNavigator from './ApplicationNavigator';
 
 const SenseiApplication = () => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <PageHeader style={{ textAlign: 'center' }}>
-        <img src={Logo} alt="logo" />
-        Sensei Application
-      </PageHeader>
-      <ApplicationNavigator />
-    </div>
-  );
+  return <ApplicationNavigator />;
 };
 
 export default SenseiApplication;

@@ -1,6 +1,6 @@
 import React from 'react';
 //import { Button } from 'react-bootstrap';
-import LandingGallery from './LandingGallery';
+//import LandingGallery from './LandingGallery';
 import MaterialLandingGallery from './MaterialLandingGallery';
 import Logo from '../images/logo15.png';
 //import { Link } from 'react-router-dom';

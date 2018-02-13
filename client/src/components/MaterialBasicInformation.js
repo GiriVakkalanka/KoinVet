@@ -6,7 +6,7 @@ import newFb from '../images/newFb.png';
 import newLinkedin from '../images/newLinkedin.png';
 //import Header from './Header.js';
 
-import { Row, Col } from 'react-bootstrap';
+//import { Row, Col } from 'react-bootstrap';
 
 class MaterialBasicInformation extends Component {
   renderQuestionCard(content) {
