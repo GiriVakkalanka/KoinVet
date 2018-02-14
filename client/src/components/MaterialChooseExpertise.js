@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 //import { Jumbotron } from 'react-bootstrap';
 //import ExpertiseGallery from './ExpertiseGallery';
@@ -10,27 +11,79 @@ import * as actions from '../actions';
 //import Expertise4 from '../images/Expertise4.png';
 
 class MaterialChooseExpertise extends Component {
+  handleClick(expertise) {
+    if (this.props.application.includes(expertise)) {
+      //console.log(this.props.title);
+      //this.setState({ buttonValue: false });
+      this.props.removeExpertise(expertise);
+      console.log(expertise);
+    } else {
+      //console.log(this.props.title);
+      //this.setState({ buttonValue: true });
+
+      this.props.addExpertise(expertise);
+      console.log(expertise);
+      //console.log(this.state.buttonValue);
+    }
+  }
+
   renderButton(expertise) {
     if (this.props.application.includes(expertise)) {
       return (
-        <button className="btn blue accent-1 black-text"> Deselect </button>
+        <button
+          onClick={() => {
+            this.handleClick(expertise);
+          }}
+          className="btn blue accent-1 black-text"
+        >
+          Deselect
+        </button>
       );
     }
-    return <button className="btn yellow accent-2 black-text"> Select </button>;
+    return (
+      <button
+        onClick={() => {
+          this.handleClick(expertise);
+        }}
+        className="btn yellow accent-2 black-text"
+      >
+        Select
+      </button>
+    );
   }
+
+  renderText(headline, subtitle) {
+    //console.log(headline, subtitle);
+    if (this.props.application.includes(headline)) {
+      return (
+        <div className="card-content teal-text">
+          <div>
+            <h3>{headline}</h3>
+            <h4>{subtitle}</h4>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="card-content white-text">
+        <div>
+          <h3>{headline}</h3>
+          <h4>{subtitle}</h4>
+        </div>
+      </div>
+    );
+  }
+
   renderExpertiseChoices(content) {
     return _.map(content, item => {
       return (
-        <div className="row">
-          <div key={item.number} className="col s6 offset-s3">
+        <div key={item.number} className="row">
+          <div className="col s6 offset-s3">
             <div className="card grey darken-4">
-              <div className="card-content white-text">
-                <div>
-                  <h3>{item.headline}</h3>
-                  <h4>{item.subtitle}</h4>
-                </div>
+              {this.renderText(item.headline, item.subtitle)}
+              <div className="card-action">
+                {this.renderButton(item.headline)}
               </div>
-              <div className="card-action">{this.renderButton()}</div>
             </div>
           </div>
         </div>
@@ -41,8 +94,8 @@ class MaterialChooseExpertise extends Component {
   renderQuestionCard(content) {
     return _.map(content, item => {
       return (
-        <div className="row">
-          <div key={item.number} className="col s12">
+        <div key={item.number} className="row">
+          <div className="col s12">
             <div className="card grey darken-4">
               <div className="card-content white-text">
                 <div>
@@ -66,31 +119,32 @@ class MaterialChooseExpertise extends Component {
     const question = [
       {
         headline: 'What are your areas of expertise?',
-        subtitle: 'Choose all that apply.'
+        subtitle: 'Choose all that apply.',
+        number: 0
       }
     ];
 
     const gallery = [
       {
-        headline: 'Whitepaper analysis.',
+        headline: 'Whitepaper analysis',
         subtitle:
           'Help users understand the technical foundations of any given coin.',
         number: 0
       },
       {
-        headline: 'Onboarding process.',
+        headline: 'Onboarding process',
         subtitle:
           'Guide users through wallet setup, getting to cold storage, etc.',
         number: 1
       },
       {
-        headline: 'Business analysis.',
+        headline: 'Business analysis',
         subtitle:
           'Help users evaluate the business case and valuation of a coin.',
         number: 2
       },
       {
-        headline: 'Tax analysis.',
+        headline: 'Tax analysis',
         subtitle:
           'Advise users on the tax considerations related to crypto investing.',
         number: 3

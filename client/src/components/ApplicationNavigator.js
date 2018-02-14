@@ -9,38 +9,61 @@ import { Link } from 'react-router-dom';
 import ThankYou from './ThankYou';
 
 class ApplicationNavigator extends Component {
+  state = { key: 2 };
+  renderButton(linkName, linkAddress, linkKey) {
+    if (linkKey === this.state.key) {
+      return (
+        <Link
+          to={`${linkAddress}`}
+          className="btn blue accent-1 black-text"
+          onClick={() => {
+            console.log('called');
+            this.setState({ key: linkKey });
+          }}
+        >
+          {linkName}
+        </Link>
+      );
+    }
+    return (
+      <Link
+        className="btn yellow accent-3 black-text"
+        to={`${linkAddress}`}
+        onClick={() => {
+          console.log('called');
+          this.setState({ key: linkKey });
+        }}
+      >
+        {linkName}
+      </Link>
+    );
+  }
+
+  handleClick() {}
   renderContent() {
+    const basicInfo = '/sensei_application/basic_info';
+    const expertise = '/sensei_application/expertise';
+    const professionalLinks = '/sensei_application/professional_links';
+    const thanks = '/sensei_application/thanks';
     return [
       <li key="1">
-        <Link
-          className="btn yellow accent-2 black-text"
-          to="/sensei_application/basic_info"
-        >
-          Basic info
+        <Link to="/sensei_application/basic_info">
+          {this.renderButton('Basic info', basicInfo, 0)}
         </Link>
       </li>,
       <li key="2">
-        <Link
-          className="btn yellow accent-2 black-text"
-          to="/sensei_application/expertise"
-        >
-          Expertise
+        <Link to="/sensei_application/expertise">
+          {this.renderButton('Expertise', expertise, 1)}
         </Link>
       </li>,
       <li key="3">
-        <Link
-          className="btn yellow accent-2 black-text"
-          to="/sensei_application/professional_links"
-        >
-          Pro Links
+        <Link to="/sensei_application/professional_links">
+          {this.renderButton('Pro Links', professionalLinks, 2)}
         </Link>
       </li>,
       <li key="4">
-        <Link
-          className="btn yellow accent-2 black-text"
-          to="/sensei_application/thanks"
-        >
-          Thanks!
+        <Link to="/sensei_application/thanks">
+          {this.renderButton('Thanks', thanks, 3)}
         </Link>
       </li>
     ];

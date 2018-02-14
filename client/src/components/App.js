@@ -5,7 +5,7 @@ import * as actions from '../actions';
 import Landing from './Landing';
 //import Header from './Header';
 //import BootstrapHeader from './BootstrapHeader';
-import SenseiApplication from './SenseiApplication';
+//import SenseiApplication from './SenseiApplication';
 import MaterialChooseExpertise from './MaterialChooseExpertise';
 import MaterialBasicInformation from './MaterialBasicInformation';
 import MaterialProfessionalLinks from './MaterialProfessionalLinks';

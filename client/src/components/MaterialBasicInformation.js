@@ -12,8 +12,8 @@ class MaterialBasicInformation extends Component {
   renderQuestionCard(content) {
     return _.map(content, item => {
       return (
-        <div className="row">
-          <div key={item.number} className="col s12">
+        <div key={item.number} className="row">
+          <div className="col s12">
             <div className="card grey darken-4">
               <div className="card-content white-text">
                 <div>
@@ -54,7 +54,8 @@ class MaterialBasicInformation extends Component {
     const question = [
       {
         headline: 'How would you like to login?',
-        subtitle: 'Choose a service to provide basic information.'
+        subtitle: 'Choose a service to provide basic information.',
+        number: 0
       }
     ];
 
