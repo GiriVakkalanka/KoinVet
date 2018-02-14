@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //import { Button } from 'react-bootstrap';
 //import LandingGallery from './LandingGallery';
-import MaterialLandingGallery from './MaterialLandingGallery';
+//import MaterialLandingGallery from './MaterialLandingGallery';
 import { connect } from 'react-redux';
-import Logo from '../images/logo15.png';
+//import Logo from '../images/logo15.png';
 import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 

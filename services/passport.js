@@ -29,14 +29,19 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       //console.log('access token ', accessToken);
       //console.log('refresh token ', refreshToken);
-      //console.log('profile:', profile);
+      console.log('profile:', profile.emails[0].value);
 
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {
         return done(null, existingUser);
       }
-      const user = await new User({ googleId: profile.id }).save();
+      const user = await new User({
+        googleId: profile.id,
+        email: profile.emails[0].value,
+        name: profile.displayName,
+        pic: profile.photos[0].value
+      }).save();
       done(null, user);
     }
   )
@@ -48,13 +53,13 @@ passport.use(
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
       callbackURL: '/auth/facebook/callback',
-      profileFields: ['id', 'displayName', 'email'],
+      profileFields: ['id', 'displayName', 'email', 'photos'],
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
       //console.log('access token ', accessToken);
       //console.log('refresh token ', refreshToken);
-      console.log('profile:', profile);
+      //console.log('profile:', profile);
 
       const existingUser = await User.findOne({ facebookId: profile.id });
 
@@ -63,7 +68,12 @@ passport.use(
         return done(null, existingUser);
       }
 
-      const user = await new User({ facebookId: profile.id }).save();
+      const user = await new User({
+        facebookId: profile.id,
+        email: profile.emails[0].value,
+        name: profile.displayName,
+        pic: profile.photos[0].value
+      }).save();
       //console.log(user);
       done(null, user);
     }
@@ -76,12 +86,13 @@ passport.use(
       clientID: keys.linkedinClientID,
       clientSecret: keys.linkedinClientSecret,
       callbackURL: '/auth/linkedin/callback',
-      scoope: ['r_emailaddress', 'r_basicprofile'],
+      scope: ['r_emailaddress', 'r_basicprofile'],
       state: true,
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
       process.nextTick(async () => {
+        //console.log(profile.emails[0].value);
         const existingUser = await User.findOne({ linkedinId: profile.id });
 
         if (existingUser) {
@@ -89,7 +100,12 @@ passport.use(
           return done(null, existingUser);
         }
 
-        const user = await new User({ linkedinId: profile.id }).save();
+        const user = await new User({
+          linkedinId: profile.id,
+          email: profile.emails[0].value,
+          name: profile.displayName,
+          pic: profile.photos[0].value
+        }).save();
         //console.log(user);
         return done(null, user);
       });

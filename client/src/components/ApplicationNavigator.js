@@ -6,7 +6,7 @@ import * as actions from '../actions';
 //import BasicInformation from './BasicInformation';
 //import ProfessionalLinks from './ProfessionalLinks';
 import { Link } from 'react-router-dom';
-import ThankYou from './ThankYou';
+//import ThankYou from './ThankYou';
 
 class ApplicationNavigator extends Component {
   /*

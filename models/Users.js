@@ -14,6 +14,7 @@ const userSchema = new Schema({
   linkedinId: String,
   name: String,
   pic: String,
+  email: String,
   type: { type: Number, default: 0 },
   city: String,
   country: String,

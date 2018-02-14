@@ -15,11 +15,17 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
+      //console.log(res);
       res.redirect('/sensei_application/expertise');
     }
   );
 
-  app.get('/auth/facebook', passport.authenticate('facebook'));
+  app.get(
+    '/auth/facebook',
+    passport.authenticate('facebook', {
+      scope: ['email']
+    })
+  );
 
   app.get(
     '/auth/facebook/callback',
