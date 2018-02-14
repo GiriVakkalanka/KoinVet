@@ -83,7 +83,7 @@ class ApplicationNavigator extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper  grey darken-4">
+        <div className="card grey darken-4">
           <ul>{this.renderContent()}</ul>
         </div>
       </nav>
