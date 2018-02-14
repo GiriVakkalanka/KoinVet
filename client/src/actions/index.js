@@ -4,7 +4,8 @@ import {
   ADD_EXPERTISE,
   REMOVE_EXPERTISE,
   GET_EXPERTISE,
-  SUBMIT_APPLICATION
+  SUBMIT_APPLICATION,
+  CHANGE_LOCATION
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -42,4 +43,8 @@ export const submitApplication = application => async dispatch => {
   const res = await axios.post('/api/submit_application', application);
   //history.push('/sensei_application');
   dispatch({ type: SUBMIT_APPLICATION, payload: res.data });
+};
+
+export const changeLocation = location => {
+  return { type: CHANGE_LOCATION, payload: location };
 };

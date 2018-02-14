@@ -11,6 +11,9 @@ import * as actions from '../actions';
 //import Expertise4 from '../images/Expertise4.png';
 
 class MaterialChooseExpertise extends Component {
+  componentDidMount() {
+    this.props.changeLocation(1);
+  }
   handleClick(expertise) {
     if (this.props.application.includes(expertise)) {
       //console.log(this.props.title);
@@ -113,6 +116,10 @@ class MaterialChooseExpertise extends Component {
                 <Link
                   to="/sensei_application/professional_links"
                   className="btn-large yellow accent-2 black-text right-align"
+                  onClick={() => {
+                    console.log('change location called');
+                    this.props.changeLocation(2);
+                  }}
                 >
                   Next
                 </Link>

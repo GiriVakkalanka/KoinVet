@@ -35,8 +35,8 @@ class MaterialLandingGallery extends Component {
       const noOffset = 'col s9';
       const even = item.number % 2 === 0;
       return (
-        <div className="row">
-          <div key={item.number} className={even ? `${noOffset}` : `${offset}`}>
+        <div key={item.number} className="row">
+          <div className={even ? `${noOffset}` : `${offset}`}>
             <div className="card grey darken-4">
               <div className="card-content white-text">
                 <div>

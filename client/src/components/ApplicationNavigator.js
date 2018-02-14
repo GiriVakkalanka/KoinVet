@@ -9,9 +9,20 @@ import { Link } from 'react-router-dom';
 import ThankYou from './ThankYou';
 
 class ApplicationNavigator extends Component {
-  state = { key: 2 };
+  /*
+  componentDidMount() {
+    //console.log('called');
+    this.setState({ key: this.props.location });
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ key: this.props.location });
+  }
+  */
+
   renderButton(linkName, linkAddress, linkKey) {
-    if (linkKey === this.state.key) {
+    if (linkKey === this.props.location) {
       return (
         <Link
           to={`${linkAddress}`}
@@ -80,8 +91,8 @@ class ApplicationNavigator extends Component {
   }
 }
 
-function mapStateToProps({ application, auth }) {
-  return { application, auth };
+function mapStateToProps({ application, auth, location }) {
+  return { application, auth, location };
 }
 
 export default connect(mapStateToProps, actions)(ApplicationNavigator);

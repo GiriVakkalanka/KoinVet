@@ -8,8 +8,9 @@ import { Col, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 class ProfessionalLinks extends Component {
   componentDidMount() {
-    console.log(this.props.application);
+    this.props.changeLocation(2);
   }
+
   handleSubmit() {
     const linkOne = findDOMNode(this.refs.linkOne).value;
     const linkTwo = findDOMNode(this.refs.linkTwo).value;
@@ -30,8 +31,8 @@ class ProfessionalLinks extends Component {
   renderQuestionCard(content) {
     return _.map(content, item => {
       return (
-        <div className="row">
-          <div key={item.number} className="col s12">
+        <div key={item.number} className="row">
+          <div className="col s12">
             <div className="card grey darken-4">
               <div className="card-content white-text">
                 <div>
@@ -50,7 +51,8 @@ class ProfessionalLinks extends Component {
     const question = [
       {
         headline: 'What do you do?',
-        subtitle: 'Send us any three links that best describe your work.'
+        subtitle: 'Send us any three links that best describe your work.',
+        number: 0
       }
     ];
 
@@ -89,7 +91,11 @@ class ProfessionalLinks extends Component {
             <Link to="/thanks">
               <button
                 className="btn-large yellow accent-2 black-text"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={() => {
+                  console.log('change location called');
+                  this.handleSubmit();
+                  this.props.changeLocation(3);
+                }}
               >
                 SUBMIT
               </button>
@@ -101,8 +107,8 @@ class ProfessionalLinks extends Component {
   }
 }
 
-function mapStateToProps({ auth, application }) {
-  return { auth, application };
+function mapStateToProps({ auth, application, location }) {
+  return { auth, application, location };
 }
 
 export default connect(mapStateToProps, actions)(ProfessionalLinks);

@@ -5,11 +5,16 @@ import newGoogle from '../images/newGoogle.png';
 import newFb from '../images/newFb.png';
 import newLinkedin from '../images/newLinkedin.png';
 import { Link } from 'react-router-dom';
+import * as actions from '../actions';
+
 //import Header from './Header.js';
 
 //import { Row, Col } from 'react-bootstrap';
 
 class MaterialBasicInformation extends Component {
+  componentDidMount() {
+    this.props.changeLocation(0);
+  }
   renderQuestionCard(content) {
     return _.map(content, item => {
       return (
@@ -46,6 +51,10 @@ class MaterialBasicInformation extends Component {
                 <Link
                   to="/sensei_application/expertise"
                   className="btn-large yellow accent-2 black-text right-align"
+                  onClick={() => {
+                    console.log('change location called');
+                    this.props.changeLocation(1);
+                  }}
                 >
                   Next
                 </Link>
@@ -70,11 +79,11 @@ class MaterialBasicInformation extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, location }) {
+  return { auth, location };
 }
 
-export default connect(mapStateToProps)(MaterialBasicInformation);
+export default connect(mapStateToProps, actions)(MaterialBasicInformation);
 
 /*
 import React, { Component } from 'react';
