@@ -81,7 +81,7 @@ class MaterialChooseExpertise extends Component {
     return _.map(content, item => {
       return (
         <div key={item.number} className="row">
-          <div className="col s6 offset-s3">
+          <div className="col s9">
             <div className="card grey darken-4">
               {this.renderText(item.headline, item.subtitle)}
               <div className="card-action">
