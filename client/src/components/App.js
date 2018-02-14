@@ -10,6 +10,7 @@ import MaterialChooseExpertise from './MaterialChooseExpertise';
 import MaterialBasicInformation from './MaterialBasicInformation';
 import MaterialProfessionalLinks from './MaterialProfessionalLinks';
 import ApplicationNavigator from './ApplicationNavigator';
+import MaterialThanks from './MaterialThanks';
 //import Dashboard from './Dashboard';
 //import SurveyNew from './surveys/SurveyNew';
 
@@ -39,7 +40,10 @@ class App extends Component {
               path="/sensei_application/professional_links"
               component={MaterialProfessionalLinks}
             />
-            <Route path="/sensei_application/thanks" component={Landing} />
+            <Route
+              path="/sensei_application/thanks"
+              component={MaterialThanks}
+            />
           </div>
         </BrowserRouter>
       </div>

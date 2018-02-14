@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import newGoogle from '../images/newGoogle.png';
 import newFb from '../images/newFb.png';
 import newLinkedin from '../images/newLinkedin.png';
+import { Link } from 'react-router-dom';
 //import Header from './Header.js';
 
 //import { Row, Col } from 'react-bootstrap';
@@ -39,9 +40,15 @@ class MaterialBasicInformation extends Component {
                 </div>
               </div>
               <div className="card-action">
-                <button className="btn-large yellow accent-2 black-text">
+                <Link to="/" className="btn-large yellow accent-2 black-text">
+                  Back
+                </Link>
+                <Link
+                  to="/sensei_application/expertise"
+                  className="btn-large yellow accent-2 black-text right-align"
+                >
                   Next
-                </button>
+                </Link>
               </div>
             </div>
           </div>

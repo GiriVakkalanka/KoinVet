@@ -104,9 +104,18 @@ class MaterialChooseExpertise extends Component {
                 </div>
               </div>
               <div className="card-action">
-                <button className="btn-large yellow accent-2 black-text">
+                <Link
+                  to="/sensei_application/basic_info"
+                  className="btn-large yellow accent-2 black-text"
+                >
+                  Back
+                </Link>
+                <Link
+                  to="/sensei_application/professional_links"
+                  className="btn-large yellow accent-2 black-text right-align"
+                >
                   Next
-                </button>
+                </Link>
               </div>
             </div>
           </div>

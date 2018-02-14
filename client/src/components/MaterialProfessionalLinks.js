@@ -86,7 +86,7 @@ class ProfessionalLinks extends Component {
                 ref="linkThree"
               />
             </FormGroup>
-            <Link to="/">
+            <Link to="/thanks">
               <button
                 className="btn-large yellow accent-2 black-text"
                 onClick={this.handleSubmit.bind(this)}

@@ -68,7 +68,8 @@ class MaterialLandingGallery extends Component {
     const footer = [
       {
         headline: 'Advise the crypto world.',
-        subtitle: 'Become a sensei today.'
+        subtitle: 'Become a sensei today.',
+        number: 0
       }
     ];
 
