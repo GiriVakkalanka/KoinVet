@@ -11,6 +11,7 @@ import MaterialBasicInformation from './MaterialBasicInformation';
 import MaterialProfessionalLinks from './MaterialProfessionalLinks';
 import ApplicationNavigator from './ApplicationNavigator';
 import MaterialThanks from './MaterialThanks';
+import MaterialMoreInfo from './MaterialMoreInfo';
 //import Dashboard from './Dashboard';
 //import SurveyNew from './surveys/SurveyNew';
 
@@ -44,6 +45,7 @@ class App extends Component {
               path="/sensei_application/thanks"
               component={MaterialThanks}
             />
+            <Route path="/more_information" component={MaterialMoreInfo} />
           </div>
         </BrowserRouter>
       </div>

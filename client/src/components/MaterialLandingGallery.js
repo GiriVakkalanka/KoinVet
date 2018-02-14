@@ -45,9 +45,12 @@ class MaterialLandingGallery extends Component {
                 </div>
               </div>
               <div className="card-action">
-                <button className="btn yellow accent-2 black-text">
+                <Link
+                  to="/more_information"
+                  className="btn yellow accent-2 black-text"
+                >
                   Learn More
-                </button>
+                </Link>
               </div>
             </div>
           </div>
