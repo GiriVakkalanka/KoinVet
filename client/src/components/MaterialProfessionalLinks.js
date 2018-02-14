@@ -88,17 +88,12 @@ class ProfessionalLinks extends Component {
                 ref="linkThree"
               />
             </FormGroup>
-            <Link to="/thanks">
-              <button
-                className="btn-large yellow accent-2 black-text"
-                onClick={() => {
-                  console.log('change location called');
-                  this.handleSubmit();
-                  this.props.changeLocation(3);
-                }}
-              >
-                SUBMIT
-              </button>
+            <Link
+              onClick={() => this.handleSubmit()}
+              className="btn-large yellow accent-2 black-text "
+              to="/sensei_application/thanks"
+            >
+              SUBMIT
             </Link>
           </Col>
         </div>

@@ -51,10 +51,6 @@ class MaterialBasicInformation extends Component {
                 <Link
                   to="/sensei_application/expertise"
                   className="btn-large yellow accent-2 black-text right-align"
-                  onClick={() => {
-                    console.log('change location called');
-                    this.props.changeLocation(1);
-                  }}
                 >
                   Next
                 </Link>
