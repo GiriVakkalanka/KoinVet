@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+//import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import { List, ListItem, makeSelectable } from 'material-ui/List';
 import { connect } from 'react-redux';

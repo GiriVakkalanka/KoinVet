@@ -13,6 +13,7 @@ import MaterialProfessionalLinks from './MaterialProfessionalLinks';
 import ApplicationNavigator from './ApplicationNavigator';
 import MaterialThanks from './MaterialThanks';
 import MaterialMoreInfo from './MaterialMoreInfo';
+import Browse from './browse/Browse';
 //import Dashboard from './Dashboard';
 //import SurveyNew from './surveys/SurveyNew';
 import LayoutDrawer from './layout/LayoutDrawer.js';
@@ -78,6 +79,7 @@ class App extends Component {
               <Route path="/more_information" component={MaterialMoreInfo} />
               <Route path="/test/layout_test" component={LayoutTest} />
               <Route path="/test/layout_test2" component={LayoutTest} />
+              <Route path="/test/browse" component={Browse} />
             </div>
           </div>
         </BrowserRouter>
