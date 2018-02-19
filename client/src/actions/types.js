@@ -5,3 +5,4 @@ export const GET_EXPERTISE = 'get_expertise';
 export const SUBMIT_APPLICATION = 'submit_application';
 export const CHANGE_LOCATION = 'change_location';
 export const GET_LOCATION = 'get_location';
+export const TOGGLE_DRAWER = 'toggle_drawer';

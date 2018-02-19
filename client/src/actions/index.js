@@ -5,7 +5,8 @@ import {
   REMOVE_EXPERTISE,
   GET_EXPERTISE,
   SUBMIT_APPLICATION,
-  CHANGE_LOCATION
+  CHANGE_LOCATION,
+  TOGGLE_DRAWER
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -47,4 +48,8 @@ export const submitApplication = application => async dispatch => {
 
 export const changeLocation = location => {
   return { type: CHANGE_LOCATION, payload: location };
+};
+
+export const toggleDrawer = open => {
+  return { type: TOGGLE_DRAWER, payload: open };
 };

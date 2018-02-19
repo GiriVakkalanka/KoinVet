@@ -15,18 +15,23 @@ class MaterialThanks extends Component {
   }
   render() {
     return (
-      <div className="row">
-        <div className="col s12">
-          <div className="card grey darken-4">
-            <div className="card-content white-text">
-              <div>
-                <h1>Thank you.</h1>
-                <h3>
-                  We will review your application and get back to you shortly
-                </h3>
-                <Link className="btn-large yellow accent-2 black-text " to="/">
-                  Go Back
-                </Link>
+      <div className="container">
+        <div className="row">
+          <div className="col s12">
+            <div className="card grey darken-4">
+              <div className="card-content white-text">
+                <div>
+                  <h1>Thank you.</h1>
+                  <h3>
+                    We will review your application and get back to you shortly
+                  </h3>
+                  <Link
+                    className="btn-large yellow accent-2 black-text "
+                    to="/"
+                  >
+                    Go Back
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

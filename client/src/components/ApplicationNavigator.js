@@ -74,7 +74,7 @@ class ApplicationNavigator extends Component {
       </li>,
       <li key="4">
         <Link to="/sensei_application/thanks">
-          {this.renderButton('Thanks', thanks, 3)}
+          {this.renderButton('Thank You', thanks, 3)}
         </Link>
       </li>
     ];
