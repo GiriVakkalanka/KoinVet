@@ -6,29 +6,25 @@ import * as actions from '../../actions';
 import ChipInput from 'material-ui-chip-input';
 
 class SelectSpecialization extends Component {
-  state = { chips: [] };
-
-  handleChange(chips) {
-    //console.log(chips);
-    this.setState({ chips });
-    //console.log(this.state.chips);
-  }
+  //state = { chips: [] };
 
   handleAddChip(chip) {
-    const newChips = this.state.chips;
-    newChips.push(chip);
-    this.setState({ chips: newChips });
-    this.props.saveSpecialization(this.state.chips);
+    const chips = this.props.auth ? this.props.auth.specialization : [];
+    //const newChips = this.state.chips;
+    //console.log(chips);
+    chips.push(chip);
+    //this.setState({ chips: newChips });
+    this.props.saveSpecialization(chips);
   }
 
   handleDeleteChip(chip, index) {
     //console.log(index);
-
-    let newChips = this.state.chips;
-    newChips.splice(index, 1);
+    const chips = this.props.auth ? this.props.auth.specialization : [];
+    //let newChips = this.state.chips;
+    chips.splice(index, 1);
     //newChips = [...newChips.slice(0, index), ...newChips.slice(index + 1)];
-    this.setState({ chips: newChips });
-    this.props.saveSpecialization(this.state.chips);
+    //this.setState({ chips: newChips });
+    this.props.saveSpecialization(chips);
   }
 
   handleClick() {
