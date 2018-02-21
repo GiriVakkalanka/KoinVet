@@ -42,6 +42,7 @@ export const getExpertise = () => {
 
 export const submitApplication = application => async dispatch => {
   const res = await axios.post('/api/submit_application', application);
+  //console.log(application);
   //history.push('/sensei_application');
   dispatch({ type: SUBMIT_APPLICATION, payload: res.data });
 };
@@ -52,4 +53,20 @@ export const changeLocation = location => {
 
 export const toggleDrawer = open => {
   return { type: TOGGLE_DRAWER, payload: open };
+};
+
+export const saveExpertise = expertiseChoices => async dispatch => {
+  console.log(expertiseChoices);
+  const res = await axios.post('/api/save_expertise_choices', expertiseChoices);
+  //history.push('/sensei_application');
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const saveSpecialization = specializationChoices => async dispatch => {
+  //console.log(specializationChoices);
+  const res = await axios.post(
+    '/api/save_specialization_choices',
+    specializationChoices
+  );
+  dispatch({ type: FETCH_USER, payload: res.data });
 };

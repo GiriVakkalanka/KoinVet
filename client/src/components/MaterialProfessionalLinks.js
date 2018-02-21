@@ -26,6 +26,7 @@ class ProfessionalLinks extends Component {
     console.log(application);
 
     this.props.submitApplication(application);
+    //this.props.saveExpertise(application);
   }
 
   renderQuestionCard(content) {

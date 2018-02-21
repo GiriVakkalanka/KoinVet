@@ -2,6 +2,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Application = mongoose.model('application');
+const User = mongoose.model('users');
 
 module.exports = app => {
   app.get(
@@ -69,6 +70,7 @@ module.exports = app => {
   app.post('/api/submit_application', requireLogin, async (req, res) => {
     //console.log('hi');
     //const { links, expertise } = req.body;
+    console.log(req.body);
     const expertise = req.body[0];
     const links = req.body[1];
 
@@ -88,4 +90,29 @@ module.exports = app => {
       res.status(400).send(err);
     }
   });
+
+  app.post('/api/save_expertise_choices', requireLogin, async (req, res) => {
+    const choices = req.body;
+    console.log(choices);
+    const userRecord = await User.findOne({ _id: req.user.id });
+    userRecord.expertise = choices;
+    const updatedUser = await userRecord.save();
+    console.log(updatedUser);
+    res.send(updatedUser);
+  });
+
+  app.post(
+    '/api/save_specialization_choices',
+    requireLogin,
+    async (req, res) => {
+      const specializationChoices = req.body;
+      console.log(specializationChoices);
+
+      const userRecord = await User.findOne({ _id: req.user.id });
+      userRecord.specialization = specializationChoices;
+      const updatedUser = await userRecord.save();
+      console.log(updatedUser);
+      res.send(updatedUser);
+    }
+  );
 };

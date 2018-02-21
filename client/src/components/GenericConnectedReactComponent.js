@@ -7,7 +7,7 @@ class GenericComponent extends Component {
   render() {
     return (
       <div>
-        <h1>Generic Component</h2>
+        <h1>Generic Component</h1>
       </div>
     );
   }
