@@ -21,6 +21,9 @@ import AppBar from 'material-ui/AppBar';
 import LayoutTest from './layout/LayoutTest';
 import SelectExpertise from './dashboard/SelectExpertise';
 import SelectSpecialization from './dashboard/SelectSpecialization';
+import SelectLinks from './dashboard/SelectLinks';
+import AddLinks from './dashboard/AddLinks';
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -88,6 +91,10 @@ class App extends Component {
               <Route
                 path="/test/dashboard/select_specialization"
                 component={SelectSpecialization}
+              />
+              <Route
+                path="/test/dashboard/select_links"
+                component={SelectLinks}
               />
             </div>
           </div>

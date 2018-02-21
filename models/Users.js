@@ -21,7 +21,7 @@ const userSchema = new Schema({
   city: String,
   country: String,
   price: { type: Number, default: 0 },
-  links: [LinkSchema],
+  links: [String],
   verticals: [Number],
   ratingsReceived: [RatingSchema],
   reviewsReceived: [ReviewSchema],

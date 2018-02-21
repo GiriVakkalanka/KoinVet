@@ -115,4 +115,15 @@ module.exports = app => {
       res.send(updatedUser);
     }
   );
+
+  app.post('/api/save_link_choices', requireLogin, async (req, res) => {
+    const linkChoices = req.body;
+    console.log(linkChoices);
+
+    const userRecord = await User.findOne({ _id: req.user.id });
+    userRecord.links = linkChoices;
+    const updatedUser = await userRecord.save();
+    console.log(updatedUser);
+    res.send(updatedUser);
+  });
 };
