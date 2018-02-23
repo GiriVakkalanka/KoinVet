@@ -22,6 +22,8 @@ import LayoutTest from './layout/LayoutTest';
 import SelectExpertise from './dashboard/SelectExpertise';
 import SelectSpecialization from './dashboard/SelectSpecialization';
 import SelectLinks from './dashboard/SelectLinks';
+import SelectSchedule from './dashboard/SelectSchedule';
+
 import AddLinks from './dashboard/AddLinks';
 
 class App extends Component {

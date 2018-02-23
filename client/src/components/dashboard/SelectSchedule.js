@@ -1,7 +1,7 @@
 //import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../actions';
 
 class SelectSchedule extends Component {
   render() {
@@ -13,8 +13,8 @@ class SelectSchedule extends Component {
   }
 }
 
-function mapStateToProps({ application }) {
-  return { application };
+function mapStateToProps({ auth }) {
+  return { auth };
 }
 
 export default connect(mapStateToProps, actions)(SelectSchedule);
