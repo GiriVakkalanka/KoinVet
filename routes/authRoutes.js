@@ -126,4 +126,10 @@ module.exports = app => {
     console.log(updatedUser);
     res.send(updatedUser);
   });
+
+  app.post('/api/save_time_slot', requireLogin, async (req, res) => {
+    const timeSlot = req.body;
+    console.log(timeSlot);
+    res.send('hi');
+  })
 };

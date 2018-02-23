@@ -98,6 +98,10 @@ class App extends Component {
                 path="/test/dashboard/select_links"
                 component={SelectLinks}
               />
+              <Route
+                path="/test/dashboard/select_schedule"
+                component={SelectSchedule}
+              />
             </div>
           </div>
         </BrowserRouter>

@@ -6,7 +6,11 @@ import {
   GET_EXPERTISE,
   SUBMIT_APPLICATION,
   CHANGE_LOCATION,
-  TOGGLE_DRAWER
+  TOGGLE_DRAWER,
+  CHANGE_DATE,
+  CHANGE_STARTTIME,
+  CHANGE_ENDTIME,
+  SAVE_SLOT
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -75,4 +79,26 @@ export const saveLinks = linkChoices => async dispatch => {
   //console.log(specializationChoices);
   const res = await axios.post('/api/save_link_choices', linkChoices);
   dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const changeDate = date => {
+  //console.log(date);
+  return { type: CHANGE_DATE, payload: date };
+};
+
+export const changeStarttime = startTime => {
+  return { type: CHANGE_STARTTIME, payload: startTime };
+};
+
+export const changeEndtime = endTime => {
+  return { type: CHANGE_ENDTIME, payload: endTime };
+};
+
+export const saveTimeSlot = timeSlot => async dispatch => {
+  //console.log(specializationChoices);
+  const res = await axios.post(
+    '/api/save_time_slot',
+    timeSlot
+  );
+  dispatch({ type: SAVE_SLOT, payload: res.data });
 };

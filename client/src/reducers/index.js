@@ -4,10 +4,13 @@ import authReducer from './authReducer';
 import applicationReducer from './applicationReducer';
 import locationReducer from './locationReducer';
 import drawerReducer from './drawerReducer';
+import dateReducer from './dateReducer';
+
 export default combineReducers({
   auth: authReducer,
   application: applicationReducer,
   form: reduxForm,
   location: locationReducer,
-  drawer: drawerReducer
+  drawer: drawerReducer,
+  date: dateReducer
 });
