@@ -1,4 +1,9 @@
-import { CHANGE_DATE, CHANGE_STARTTIME, CHANGE_ENDTIME, SAVE_SLOT } from '../actions/types';
+import {
+  CHANGE_DATE,
+  CHANGE_STARTTIME,
+  CHANGE_ENDTIME,
+  SAVE_WINDOW
+} from '../actions/types';
 
 export default function(state = {}, action) {
   //console.log(action);
@@ -18,7 +23,7 @@ export default function(state = {}, action) {
       newState3.endTime = action.payload;
       //console.log(newState3);
       return newState3;
-    case SAVE_SLOT:
+    case SAVE_WINDOW:
       return state;
     default:
       return state;

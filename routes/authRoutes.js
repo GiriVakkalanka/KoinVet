@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Application = mongoose.model('application');
 const User = mongoose.model('users');
-
+const Window = mongoose.model('window');
 module.exports = app => {
   app.get(
     '/auth/google',
@@ -127,9 +127,23 @@ module.exports = app => {
     res.send(updatedUser);
   });
 
-  app.post('/api/save_time_slot', requireLogin, async (req, res) => {
-    const timeSlot = req.body;
-    console.log(timeSlot);
-    res.send('hi');
-  })
+  app.post('/api/save_time_window', requireLogin, async (req, res) => {
+    const timeWindow = req.body;
+    const dateStartObj = new Date(timeWindow.date);
+    const timeStartObj = new Date(timeWindow.startTime);
+    const timeEndObj = new Date(timeWindow.endTime);
+    const windowRecord = new Window({
+      dateCreated: Date.now(),
+      startDate: dateStartObj,
+      startTime: timeStartObj,
+      endTime: timeEndObj
+    });
+    await windowRecord.save();
+
+    const userWanted = await User.findOne({ _id: req.user.id });
+    userWanted.windows.push(windowRecord);
+    const updatedUser = await userWanted.save();
+    console.log(timeWindow);
+    res.send(updatedUser);
+  });
 };

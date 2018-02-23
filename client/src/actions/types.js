@@ -9,4 +9,4 @@ export const TOGGLE_DRAWER = 'toggle_drawer';
 export const CHANGE_DATE = 'change_date';
 export const CHANGE_STARTTIME = 'change_starttime';
 export const CHANGE_ENDTIME = 'change_endtime';
-export const SAVE_SLOT = 'change_slot';
+export const SAVE_WINDOW = 'change_window';

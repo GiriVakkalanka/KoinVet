@@ -6,7 +6,6 @@ import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 
 class TimeSlotSelector extends Component {
-
   handleDate(event, date) {
     const pickedDate = new Date(date);
     const dateString = pickedDate.toJSON();
@@ -21,21 +20,21 @@ class TimeSlotSelector extends Component {
   handleTime(event, time, start) {
     const pickedTime = new Date(time);
     const timeString = pickedTime.toJSON();
-    if(start){
+    if (start) {
       this.props.changeStarttime(timeString);
     } else {
       this.props.changeEndtime(timeString);
     }
   }
 
-  handleSave(){
+  handleSave() {
     //console.log('save called')
-    const timeSlot = {
+    const timeWindow = {
       date: this.props.date.date,
       startTime: this.props.date.startTime,
       endTime: this.props.date.endTime
-    }
-    this.props.saveTimeSlot(timeSlot);
+    };
+    this.props.saveTimeWindow(timeWindow);
   }
 
   render() {

@@ -6,6 +6,7 @@ const RatingSchema = require('./Rating');
 const ReviewSchema = require('./Review');
 const SessionSchema = require('./Session');
 const RequestSchema = require('./Request');
+const WindowSchema = require('./Window');
 
 const userSchema = new Schema({
   googleId: String,
@@ -22,6 +23,7 @@ const userSchema = new Schema({
   country: String,
   price: { type: Number, default: 0 },
   links: [String],
+  windows: [WindowSchema],
   verticals: [Number],
   ratingsReceived: [RatingSchema],
   reviewsReceived: [ReviewSchema],

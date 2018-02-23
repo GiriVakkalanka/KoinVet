@@ -13,6 +13,7 @@ require('./models/Session');
 require('./models/Request');
 require('./services/passport');
 require('./models/Application');
+require('./models/Window');
 
 mongoose.connect(keys.mongoURI);
 
