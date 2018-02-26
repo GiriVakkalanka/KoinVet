@@ -10,7 +10,8 @@ import {
   CHANGE_DATE,
   CHANGE_STARTTIME,
   CHANGE_ENDTIME,
-  SAVE_WINDOW
+  SAVE_WINDOW,
+  SELECT_WINDOW
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -97,4 +98,9 @@ export const changeEndtime = endTime => {
 export const saveTimeWindow = timeWindow => async dispatch => {
   const res = await axios.post('/api/save_time_window', timeWindow);
   dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const selectWindow = window => {
+  console.log(window);
+  return { type: SELECT_WINDOW, payload: window };
 };

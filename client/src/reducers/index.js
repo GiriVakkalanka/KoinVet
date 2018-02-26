@@ -5,6 +5,7 @@ import applicationReducer from './applicationReducer';
 import locationReducer from './locationReducer';
 import drawerReducer from './drawerReducer';
 import dateReducer from './dateReducer';
+import selectedWindowReducer from './selectedWindowReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   form: reduxForm,
   location: locationReducer,
   drawer: drawerReducer,
-  date: dateReducer
+  date: dateReducer,
+  selectedWindow: selectedWindowReducer
 });

@@ -7,6 +7,8 @@ import TimePicker from 'material-ui/TimePicker';
 
 class TimeSlotSelector extends Component {
   handleDate(event, date) {
+    const today = Date.now();
+    //console.log(typeof today);
     const pickedDate = new Date(date);
     const dateString = pickedDate.toJSON();
     // console.log(date.toJSON());
@@ -61,8 +63,77 @@ class TimeSlotSelector extends Component {
   }
 }
 
-function mapStateToProps({ date }) {
-  return { date };
+function mapStateToProps({ date, selectedWindow, auth }) {
+  return { date, selectedWindow, auth };
 }
 
 export default connect(mapStateToProps, actions)(TimeSlotSelector);
+
+// renderPicker() {
+//   const windowSlots = this.props.auth ? this.props.auth.windows : [];
+//   const selectedDateString =
+//     this.props.selectedWindow !== null
+//       ? windowSlots[this.props.selectedWindow]
+//       : null;
+//   const selectedDate = new Date(selectedDateString);
+//   if (this.props.selectedWindow !== null) {
+//     const selectedDate = new Date(
+//       windowSlots[this.props.selectedWindow].startDate
+//     );
+//     //console.log(windowSlots[this.props.selectedWindow].startDate);
+//     const selectedStartTime = new Date(this.props.selectedWindow.startTime);
+//     const selectedEndTime = new Date(this.props.selectedWindow.endTime);
+//     return (
+//       <div>
+//         <DatePicker
+//           hintText="Portrait Dialog"
+//           mode="landscape"
+//           onChange={(event, date) => this.handleDate(event, date)}
+//           defaultDate={selectedDate}
+//         />
+//         <TimePicker
+//           hintText="12hr Format"
+//           onChange={(event, time) => this.handleTime(event, time, true)}
+//           defaultTime={selectedStartTime}
+//         />
+//         <TimePicker
+//           hintText="12hr Format"
+//           onChange={(event, time) => this.handleTime(event, time, false)}
+//           defaultTime={selectedEndTime}
+//         />
+//       </div>
+//     );
+//   } else {
+//     return (
+//       <div>
+//         <DatePicker
+//           hintText="Portrait Dialog"
+//           mode="landscape"
+//           onChange={(event, date) => this.handleDate(event, date)}
+//         />
+//         <TimePicker
+//           hintText="12hr Format"
+//           onChange={(event, time) => this.handleTime(event, time, true)}
+//         />
+//         <TimePicker
+//           hintText="12hr Format"
+//           onChange={(event, time) => this.handleTime(event, time, false)}
+//         />
+//       </div>
+//     );
+//   }
+// }
+
+// const windowSlots = this.props.auth ? this.props.auth.windows : [];
+// const index =
+//   this.props.selectedWindow !== null ? this.props.selectedWindow : null;
+// const windowSlot =
+//   windowSlots.length !== 0 && index !== null ? windowSlots[index] : null;
+// const windowSlotDate = windowSlot !== null ? windowSlot.startDate : null;
+// const windowSlotDateObject =
+//   windowSlotDate !== null ? new Date(windowSlotDate) : null;
+// console.log(windowSlots);
+// console.log(index);
+// console.log(windowSlot);
+// console.log(windowSlotDate);
+// console.log(windowSlotDateObject);

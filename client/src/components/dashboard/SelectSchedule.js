@@ -6,18 +6,24 @@ import TimeSlotSelector from './TimeSlotSelector';
 import TimeSlotList from './TimeSlotList';
 
 class SelectSchedule extends Component {
-
-
-
-
   render() {
     return (
-      <div className="row">
-        <div className="col s8">
-          <TimeSlotSelector/>
+      <div>
+        <div className="row card grey darken-4">
+          <div className="card-content white-text">
+            <h4>
+              Set a window of availability by picking a day, a start time, and
+              an end time.
+            </h4>
+          </div>
         </div>
-        <div className="col s4">
-          <TimeSlotList/>
+        <div className="row">
+          <div className="col s4">
+            <TimeSlotSelector />
+          </div>
+          <div className="col s8">
+            <TimeSlotList />
+          </div>
         </div>
       </div>
     );
