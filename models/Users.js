@@ -21,7 +21,7 @@ const userSchema = new Schema({
   specialization: [String],
   city: String,
   country: String,
-  price: { type: Number, default: 0 },
+  rate: String,
   links: [String],
   windows: [WindowSchema],
   verticals: [Number],
