@@ -22,19 +22,21 @@ class SetRate extends Component {
 
   handleSubmit() {
     const linkOne = findDOMNode(this.refs.linkOne).value;
-    const linkTwo = findDOMNode(this.refs.linkTwo).value;
-    const linkThree = findDOMNode(this.refs.linkThree).value;
+    //const linkTwo = findDOMNode(this.refs.linkTwo).value;
+    //const linkThree = findDOMNode(this.refs.linkThree).value;
 
-    const links = [linkOne, linkTwo, linkThree];
-    //console.log(links);
+    // const links = [linkOne, linkTwo, linkThree];
+    // //console.log(links);
+    //
+    // const expertise = this.props.application;
+    // console.log(expertise);
+    //
+    // const application = [expertise, links];
+    // console.log(application);
 
-    const expertise = this.props.application;
-    console.log(expertise);
-
-    const application = [expertise, links];
-    console.log(application);
-
-    this.props.submitApplication(application);
+    const rate = { rate: linkOne };
+    console.log(rate);
+    this.props.saveRate(rate);
     //this.props.saveExpertise(application);
   }
 
@@ -80,59 +82,46 @@ class SetRate extends Component {
 
   renderForm() {
     const keys = Object.keys(this.state);
-    const labels = ['Link One'];
-    const refs = ['linkOne'];
+    const labels = ['Link One', 'Link Two', 'Link Three'];
+    const refs = ['linkOne', 'linkTwo', 'linkThree'];
     return _.map(keys, keyLink => {
       if (this.state[keyLink]) {
         return (
-          <div className="row" key={keyLink}>
-            <div className="col s3">
-              <Form inline>
-                <FormGroup controlId={keyLink}>
-                  <ControlLabel>{labels[keyLink]}</ControlLabel>
-                  <FormControl
-                    type="text"
-                    placeholder="Add in any link. GitHub, LinkedIn, Personal Page, etc."
-                    ref={keyLink}
-                  />
-                </FormGroup>{' '}
-                <button
-                  className="btn"
-                  onClick={() => this.handleChange(keyLink)}
-                >
-                  Save
-                </button>
-              </Form>
-            </div>
+          <div key={keyLink} className="col s3">
+            <FormGroup controlId={refs[keyLink]}>
+              <ControlLabel>{labels[keyLink]}</ControlLabel>
+              <FormControl
+                type="text"
+                placeholder="Add in any link. GitHub, LinkedIn, Personal Page, etc."
+                ref={refs[keyLink]}
+              />
+            </FormGroup>
+            <button className="btn" onClick={() => this.handleChange(keyLink)}>
+              Save
+            </button>
           </div>
         );
       } else {
         return (
-          <div className="row" key={keyLink}>
-            <div className="col s3">
-              <Form>
-                <FormGroup controlId={keyLink}>
-                  <ControlLabel>{labels[keyLink]}</ControlLabel>
-                  <FormControl
-                    type="text"
-                    placeholder="Set rate"
-                    ref={keyLink}
-                    value={
-                      this.props.auth ? this.props.auth.links[keyLink] : ''
-                    }
-                  />
-                </FormGroup>
-                <button
-                  className="btn"
-                  onClick={() => {
-                    //console.log(keyLink);
-                    this.handleChange(keyLink);
-                  }}
-                >
-                  Edit
-                </button>
-              </Form>
-            </div>
+          <div className="col s3" key={keyLink}>
+            <FormGroup controlId={refs[keyLink]}>
+              <ControlLabel>{labels[keyLink]}</ControlLabel>
+              <FormControl
+                type="text"
+                placeholder="Add in any link. GitHub, LinkedIn, Personal Page, etc."
+                ref={refs[keyLink]}
+                value={this.props.auth ? this.props.auth.rate : ''}
+              />
+            </FormGroup>
+            <button
+              className="btn"
+              onClick={() => {
+                //console.log(keyLink);
+                this.handleChange(keyLink);
+              }}
+            >
+              Edit
+            </button>
           </div>
         );
       }
@@ -153,14 +142,13 @@ class SetRate extends Component {
         <div>
           <Col xs={12}>
             <div> {this.renderQuestionCard(question)} </div>
-            <div> {this.renderForm()}</div>
-            <Link
+            <div className="row"> {this.renderForm()}</div>
+            <button
               onClick={() => this.handleSubmit()}
               className="btn-large yellow accent-2 black-text "
-              to="/sensei_application/thanks"
             >
               SUBMIT
-            </Link>
+            </button>
           </Col>
         </div>
       </div>

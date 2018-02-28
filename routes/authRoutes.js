@@ -146,4 +146,16 @@ module.exports = app => {
     console.log(timeWindow);
     res.send(updatedUser);
   });
+
+  app.post('/api/save_rate', requireLogin, async (req, res) => {
+    console.log('route called');
+    const newRate = req.body;
+    console.log(newRate);
+
+    const userRecord = await User.findOne({ _id: req.user.id });
+    userRecord.rate = newRate.rate;
+    const updatedUser = await userRecord.save();
+    console.log(updatedUser);
+    res.send(updatedUser);
+  });
 };

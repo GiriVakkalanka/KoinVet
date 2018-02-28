@@ -24,13 +24,12 @@ class ProfessionalLinks extends Component {
     const links = [linkOne, linkTwo, linkThree];
     //console.log(links);
 
-    const expertise = this.props.application;
-    console.log(expertise);
+    // const expertise = this.props.application;
+    // console.log(expertise);
 
-    const application = [expertise, links];
-    console.log(application);
+    console.log(links);
 
-    this.props.submitApplication(application);
+    this.props.saveLinks(links);
     //this.props.saveExpertise(application);
   }
 
@@ -82,12 +81,12 @@ class ProfessionalLinks extends Component {
       if (this.state[keyLink]) {
         return (
           <div key={keyLink}>
-            <FormGroup controlId={keyLink}>
+            <FormGroup controlId={refs[keyLink]}>
               <ControlLabel>{labels[keyLink]}</ControlLabel>
               <FormControl
                 type="text"
                 placeholder="Add in any link. GitHub, LinkedIn, Personal Page, etc."
-                ref={keyLink}
+                ref={refs[keyLink]}
               />
             </FormGroup>
             <button className="btn" onClick={() => this.handleChange(keyLink)}>
@@ -98,12 +97,12 @@ class ProfessionalLinks extends Component {
       } else {
         return (
           <div key={keyLink}>
-            <FormGroup controlId={keyLink}>
+            <FormGroup controlId={refs[keyLink]}>
               <ControlLabel>{labels[keyLink]}</ControlLabel>
               <FormControl
                 type="text"
                 placeholder="Add in any link. GitHub, LinkedIn, Personal Page, etc."
-                ref={keyLink}
+                ref={refs[keyLink]}
                 value={this.props.auth ? this.props.auth.links[keyLink] : ''}
               />
             </FormGroup>
@@ -137,13 +136,12 @@ class ProfessionalLinks extends Component {
           <Col xs={12}>
             <div> {this.renderQuestionCard(question)} </div>
             <div> {this.renderForm()}</div>
-            <Link
+            <button
               onClick={() => this.handleSubmit()}
               className="btn-large yellow accent-2 black-text "
-              to="/sensei_application/thanks"
             >
               SUBMIT
-            </Link>
+            </button>
           </Col>
         </div>
       </div>

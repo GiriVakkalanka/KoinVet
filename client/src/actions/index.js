@@ -104,3 +104,9 @@ export const selectWindow = window => {
   console.log(window);
   return { type: SELECT_WINDOW, payload: window };
 };
+
+export const saveRate = rate => async dispatch => {
+  console.log('action called');
+  const res = await axios.post('/api/save_rate', rate);
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
