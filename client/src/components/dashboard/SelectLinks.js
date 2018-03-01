@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import * as actions from '../../actions';
 import { Col, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 

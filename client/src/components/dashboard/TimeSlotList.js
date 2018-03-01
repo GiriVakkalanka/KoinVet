@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { List, ListItem, makeSelectable } from 'material-ui/List';
+import { List } from 'material-ui/List';
 import TimeListItem from './TimeListItem';
 import Divider from 'material-ui/Divider';
 

@@ -7,7 +7,7 @@ import TimePicker from 'material-ui/TimePicker';
 
 class TimeSlotSelector extends Component {
   handleDate(event, date) {
-    const today = Date.now();
+    //const today = Date.now();
     //console.log(typeof today);
     const pickedDate = new Date(date);
     const dateString = pickedDate.toJSON();

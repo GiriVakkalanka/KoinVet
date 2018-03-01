@@ -10,8 +10,8 @@ import {
   CHANGE_DATE,
   CHANGE_STARTTIME,
   CHANGE_ENDTIME,
-  SAVE_WINDOW,
-  SELECT_WINDOW
+  SELECT_WINDOW,
+  GET_SENSEI_PAGE
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -116,3 +116,15 @@ export const saveInfo = info => async dispatch => {
   const res = await axios.post('/api/save_info', info);
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const getSenseiPage = info => async dispatch => {
+  console.log(info);
+  const res = await axios.get('/api/get_sensei_page', { params: info });
+  dispatch({ type: GET_SENSEI_PAGE, payload: res.data });
+};
+
+// export const fetchUser = () => async dispatch => {
+//   const res = await axios.get('/api/current_user');
+//   console.log(res.data);
+//   dispatch({ type: FETCH_USER, payload: res.data });
+// };

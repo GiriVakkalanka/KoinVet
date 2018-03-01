@@ -20,6 +20,7 @@ const Hit = ({ hit }) => (
     country={hit.country}
     specialization={hit.specialization}
     expertise={hit.expertise}
+    id={hit._id}
   />
 );
 

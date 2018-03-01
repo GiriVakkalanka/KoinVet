@@ -6,25 +6,39 @@ import * as actions from '../../actions';
 
 class HitComponent extends Component {
   componentDidMount() {
-    console.log(this.props.specialization);
-    console.log(this.props.expertise);
+    //console.log(this.props.id);
+    //console.log(this.props.expertise);
+  }
+
+  handleClick() {
+    const senseiId = this.props.id;
+    const info = { key: senseiId };
+    this.props.getSenseiPage(info);
   }
 
   renderSpecializationChips() {
     return _.map(this.props.specialization, specialization => {
-      return <div className="chip yellow accent-2">{specialization}</div>;
+      return (
+        <div key={specialization} className="chip yellow accent-2">
+          {specialization}
+        </div>
+      );
     });
   }
 
   renderExpertiseChips() {
     return _.map(this.props.expertise, expertise => {
-      return <div className="chip blue darken-2 white-text">{expertise}</div>;
+      return (
+        <div key={expertise} className="chip blue darken-2 white-text">
+          {expertise}
+        </div>
+      );
     });
   }
 
   render() {
     return (
-      <div className="card grey darken-4">
+      <div key={this.props.id} className="card grey darken-4">
         <div className="card-content white-text">
           <div className="row">
             <div className="col s6">
@@ -50,7 +64,11 @@ class HitComponent extends Component {
               <div>{this.renderSpecializationChips()}</div>
             </div>
             <div className="col s3 offset-s8">
-              <Link to="/" className="btn yellow accent-2 black-text right">
+              <Link
+                to={`/test/sensei/${this.props.id}`}
+                className="btn yellow accent-2 black-text right"
+                onClick={() => this.handleClick()}
+              >
                 See Availability
               </Link>
             </div>

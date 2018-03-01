@@ -6,6 +6,7 @@ import locationReducer from './locationReducer';
 import drawerReducer from './drawerReducer';
 import dateReducer from './dateReducer';
 import selectedWindowReducer from './selectedWindowReducer';
+import senseiPageReducer from './senseiPageReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   location: locationReducer,
   drawer: drawerReducer,
   date: dateReducer,
-  selectedWindow: selectedWindowReducer
+  selectedWindow: selectedWindowReducer,
+  senseiPage: senseiPageReducer
 });

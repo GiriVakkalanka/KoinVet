@@ -11,3 +11,4 @@ export const CHANGE_STARTTIME = 'change_starttime';
 export const CHANGE_ENDTIME = 'change_endtime';
 export const SAVE_WINDOW = 'change_window';
 export const SELECT_WINDOW = 'select_window';
+export const GET_SENSEI_PAGE = 'get_sensei_page';

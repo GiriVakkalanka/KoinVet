@@ -213,4 +213,13 @@ module.exports = app => {
     });
     res.send(updatedUser);
   });
+
+  app.get('/api/get_sensei_page', requireLogin, async (req, res) => {
+    //console.log('reached');
+    const sensei = req.query;
+    //console.log(req.query);
+    const senseiRecord = await User.findOne({ _id: sensei.key });
+    console.log(senseiRecord);
+    res.send(senseiRecord);
+  });
 };

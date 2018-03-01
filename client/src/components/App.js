@@ -25,8 +25,9 @@ import SelectLinks from './dashboard/SelectLinks';
 import SelectSchedule from './dashboard/SelectSchedule';
 import SetRate from './dashboard/SetRate';
 import AddInfo from './dashboard/AddInfo';
+import SenseiPage from './browse/SenseiPage';
 
-import AddLinks from './dashboard/AddLinks';
+//import AddLinks from './dashboard/AddLinks';
 
 class App extends Component {
   componentDidMount() {
@@ -106,6 +107,7 @@ class App extends Component {
               />
               <Route path="/test/dashboard/set_rate" component={SetRate} />
               <Route path="/test/dashboard/add_info" component={AddInfo} />
+              <Route path="/test/sensei/:senseiId" component={SenseiPage} />
             </div>
           </div>
         </BrowserRouter>
