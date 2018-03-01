@@ -24,6 +24,7 @@ import SelectSpecialization from './dashboard/SelectSpecialization';
 import SelectLinks from './dashboard/SelectLinks';
 import SelectSchedule from './dashboard/SelectSchedule';
 import SetRate from './dashboard/SetRate';
+import AddInfo from './dashboard/AddInfo';
 
 import AddLinks from './dashboard/AddLinks';
 
@@ -104,6 +105,7 @@ class App extends Component {
                 component={SelectSchedule}
               />
               <Route path="/test/dashboard/set_rate" component={SetRate} />
+              <Route path="/test/dashboard/add_info" component={AddInfo} />
             </div>
           </div>
         </BrowserRouter>

@@ -110,3 +110,9 @@ export const saveRate = rate => async dispatch => {
   const res = await axios.post('/api/save_rate', rate);
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const saveInfo = info => async dispatch => {
+  console.log('action called');
+  const res = await axios.post('/api/save_info', info);
+  dispatch({ type: FETCH_USER, payload: res.data });
+};

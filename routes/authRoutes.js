@@ -193,4 +193,24 @@ module.exports = app => {
     });
     res.send(updatedUser);
   });
+
+  app.post('/api/save_info', requireLogin, async (req, res) => {
+    console.log('route called');
+    const info = req.body;
+    console.log(info);
+
+    const userRecord = await User.findOne({ _id: req.user.id });
+    userRecord.description = info.description;
+    userRecord.city = info.city;
+    userRecord.country = info.country;
+    const updatedUser = await userRecord.save();
+    console.log(updatedUser);
+    index.saveObject(updatedUser, function(err, content) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(content);
+    });
+    res.send(updatedUser);
+  });
 };
