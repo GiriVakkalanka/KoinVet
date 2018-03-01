@@ -2,15 +2,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import HitComponent from './HitComponent';
 //import Logo from '../';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch/dom';
 
 const Sidebar = () => <div className="sidebar" />;
 
 const Hit = ({ hit }) => (
-  <div>
-    <h1>{hit.email}</h1>
-  </div>
+  // <div>
+  //   <h1>{hit.email}</h1>
+  // </div>
+  <HitComponent name={hit.name} rate={hit.rate} />
 );
 
 const Content = () => (
