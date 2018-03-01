@@ -12,7 +12,15 @@ const Hit = ({ hit }) => (
   // <div>
   //   <h1>{hit.email}</h1>
   // </div>
-  <HitComponent name={hit.name} rate={hit.rate} />
+  <HitComponent
+    name={hit.name}
+    rate={hit.rate}
+    desc={hit.description}
+    city={hit.city}
+    country={hit.country}
+    specialization={hit.specialization}
+    expertise={hit.expertise}
+  />
 );
 
 const Content = () => (
