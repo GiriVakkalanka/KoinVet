@@ -29,9 +29,19 @@ class HitComponent extends Component {
   renderExpertiseChips() {
     return _.map(this.props.expertise, expertise => {
       return (
-        <div key={expertise} className="chip blue darken-2 white-text">
+        <div key={expertise} className="chip chip yellow accent-2">
           {expertise}
         </div>
+      );
+    });
+  }
+  renderLinks() {
+    return _.map(this.props.links, link => {
+      console.log(link);
+      return (
+        <a key={Math.random()} href={link}>
+          <i className="material-icons white-text">link</i>
+        </a>
       );
     });
   }
@@ -58,10 +68,16 @@ class HitComponent extends Component {
           </div>
           <div className="row">
             <div className="col s12">
+              <p>Services offered</p>
               <div>{this.renderExpertiseChips()}</div>
             </div>
             <div className="col s12">
+              <p>Specialization</p>
               <div>{this.renderSpecializationChips()}</div>
+            </div>
+            <div className="col s12">
+              <p>Links</p>
+              <div>{this.renderLinks()}</div>
             </div>
             <div className="col s3 offset-s8">
               <Link
