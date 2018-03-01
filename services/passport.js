@@ -4,8 +4,11 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
+const algoliasearch = require('algoliasearch');
 
 const User = mongoose.model('users');
+const client = algoliasearch(keys.algoliaClientID, keys.algoliaClientSecret);
+const index = client.initIndex('KoinVetDev');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -42,6 +45,20 @@ passport.use(
         name: profile.displayName,
         pic: profile.photos[0].value
       }).save();
+
+      const algoliaObjectID = user.id;
+      user.objectID = user.id;
+      user.save();
+      //console.log(algoliaObjectID);
+
+      //algolia logic
+      index.addObject(user, function(err, content) {
+        if (err) {
+          console.log(err);
+        }
+        console.log(content);
+      });
+
       done(null, user);
     }
   )
@@ -75,6 +92,17 @@ passport.use(
         pic: profile.photos[0].value
       }).save();
       //console.log(user);
+      const algoliaObjectID = user.id;
+      user.objectID = user.id;
+      user.save();
+      //console.log(user);
+
+      index.addObject(user, function(err, content) {
+        if (err) {
+          console.log(err);
+        }
+        console.log(content);
+      });
       done(null, user);
     }
   )
@@ -107,6 +135,17 @@ passport.use(
           pic: profile.photos[0].value
         }).save();
         //console.log(user);
+
+        const algoliaObjectID = user.id;
+        user.objectID = user.id;
+        user.save();
+
+        index.addObject(user, function(err, content) {
+          if (err) {
+            console.log(err);
+          }
+          console.log(content);
+        });
         return done(null, user);
       });
     }

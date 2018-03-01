@@ -34,7 +34,8 @@ const userSchema = new Schema({
   sessions: [SessionSchema],
   requestsReceived: [RequestSchema],
   requestsSubmitted: [RequestSchema],
-  credits: { type: Number, default: 0 }
+  credits: { type: Number, default: 0 },
+  objectID: String
 });
 
 mongoose.model('users', userSchema);

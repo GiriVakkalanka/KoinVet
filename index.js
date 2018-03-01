@@ -1,4 +1,5 @@
 const express = require('express');
+//const algoliasearch = require('algoliasearch');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
@@ -16,6 +17,7 @@ require('./models/Application');
 require('./models/Window');
 
 mongoose.connect(keys.mongoURI);
+//const client = algoliaSearch(keys.)
 
 const app = express();
 

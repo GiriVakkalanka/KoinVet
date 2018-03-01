@@ -1,9 +1,15 @@
 const passport = require('passport');
+//const algoliasearch = require('algoliasearch');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Application = mongoose.model('application');
 const User = mongoose.model('users');
 const Window = mongoose.model('window');
+const keys = require('../config/keys');
+const algoliasearch = require('algoliasearch');
+const client = algoliasearch(keys.algoliaClientID, keys.algoliaClientSecret);
+const index = client.initIndex('KoinVetDev');
+
 module.exports = app => {
   app.get(
     '/auth/google',
@@ -98,6 +104,13 @@ module.exports = app => {
     userRecord.expertise = choices;
     const updatedUser = await userRecord.save();
     console.log(updatedUser);
+
+    index.saveObject(updatedUser, function(err, content) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(content);
+    });
     res.send(updatedUser);
   });
 
@@ -112,6 +125,14 @@ module.exports = app => {
       userRecord.specialization = specializationChoices;
       const updatedUser = await userRecord.save();
       console.log(updatedUser);
+
+      index.saveObject(updatedUser, function(err, content) {
+        if (err) {
+          console.log(err);
+        }
+        console.log(content);
+      });
+
       res.send(updatedUser);
     }
   );
@@ -124,6 +145,14 @@ module.exports = app => {
     userRecord.links = linkChoices;
     const updatedUser = await userRecord.save();
     console.log(updatedUser);
+
+    index.saveObject(updatedUser, function(err, content) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(content);
+    });
+
     res.send(updatedUser);
   });
 
@@ -156,6 +185,12 @@ module.exports = app => {
     userRecord.rate = newRate.rate;
     const updatedUser = await userRecord.save();
     console.log(updatedUser);
+    index.saveObject(updatedUser, function(err, content) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(content);
+    });
     res.send(updatedUser);
   });
 };
