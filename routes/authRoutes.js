@@ -23,7 +23,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       //console.log(res);
-      res.redirect('/sensei_application/expertise');
+      res.redirect('/');
     }
   );
 
@@ -38,7 +38,7 @@ module.exports = app => {
     '/auth/facebook/callback',
     passport.authenticate('facebook'),
     (req, res) => {
-      res.redirect('/sensei_application/expertise');
+      res.redirect('/');
     }
   );
 
@@ -50,7 +50,7 @@ module.exports = app => {
     '/auth/linkedin/callback',
     passport.authenticate('linkedin'),
     (req, res) => {
-      res.redirect('/sensei_application/expertise');
+      res.redirect('/');
     }
   );
 

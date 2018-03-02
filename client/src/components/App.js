@@ -19,6 +19,7 @@ import Browse from './browse/Browse';
 import LayoutDrawer from './layout/LayoutDrawer.js';
 import AppBar from 'material-ui/AppBar';
 import LayoutTest from './layout/LayoutTest';
+import Header from './layout/Header';
 import SelectExpertise from './dashboard/SelectExpertise';
 import SelectSpecialization from './dashboard/SelectSpecialization';
 import SelectLinks from './dashboard/SelectLinks';
@@ -54,17 +55,20 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div className="row">
-            <AppBar
-              style={{ backgroundColor: '#212121', position: 'fixed' }}
-              title=" "
-              iconClassNameRight="muidocs-icon-navigation-expand-more"
-              onLeftIconButtonClick={() => {
-                this.props.toggleDrawer(this.props.drawer);
-              }}
-            />
+            <Header />
             <div>{this.renderDrawer()}</div>
             <div style={{ paddingTop: 64 }} className={`${layout}`}>
               <Route exact path="/" component={Browse} />
+              <Route
+                exact
+                path="/apply/select-expertise"
+                component={SelectExpertise}
+              />
+              <Route
+                exact
+                path="/apply/basic-info"
+                component={MaterialBasicInformation}
+              />
               <Route
                 path="/sensei_application"
                 component={ApplicationNavigator}
