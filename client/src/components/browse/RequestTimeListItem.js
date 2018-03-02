@@ -10,18 +10,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import * as actions from '../../actions';
 import { grey400 } from 'material-ui/styles/colors';
 
-class TimeListItem extends Component {
+class RequestTimeListItem extends Component {
   render() {
-    const iconButtonElement = (
-      <IconButton touch={true} tooltip="more" tooltipPosition="bottom-left">
-        <MoreVertIcon color={grey400} />
-      </IconButton>
-    );
-    const rightIconMenu = (
-      <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem>Delete</MenuItem>
-      </IconMenu>
-    );
     const secondaryTextString = `${this.props.startTime} - ${this.props
       .endTime}`;
 
@@ -31,7 +21,6 @@ class TimeListItem extends Component {
       <ListItem
         key={this.props.key}
         value={this.props.value}
-        rightIconButton={rightIconMenu}
         leftIcon={<LeftIcon />}
         primaryText={this.props.startDate}
         secondaryText={secondaryTextString}
@@ -46,4 +35,4 @@ function mapStateToProps({ application }) {
   return { application };
 }
 
-export default connect(mapStateToProps, actions)(TimeListItem);
+export default connect(mapStateToProps, actions)(RequestTimeListItem);

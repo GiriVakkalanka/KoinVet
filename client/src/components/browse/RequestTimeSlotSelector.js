@@ -6,71 +6,62 @@ import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class TimeSlotSelector extends Component {
-  handleDate(event, date) {
-    //const today = Date.now();
-    //console.log(typeof today);
-    const pickedDate = new Date(date);
-    const dateString = pickedDate.toJSON();
-    // console.log(date.toJSON());
-    //
-    // console.log(date);
-    // console.log(pickedDate.getDate());
-    // console.log(todaysDate.getTime());
-    this.props.changeDate(dateString);
-  }
-
-  handleTime(event, time, start) {
+class RequestTimeSlotSelector extends Component {
+  handleTime(event, time) {
     const pickedTime = new Date(time);
     const timeString = pickedTime.toJSON();
-    if (start) {
-      this.props.changeStarttime(timeString);
-    } else {
-      this.props.changeEndtime(timeString);
-    }
   }
 
-  handleSave() {
-    //console.log('save called')
-    const timeWindow = {
-      date: this.props.date.date,
-      startTime: this.props.date.startTime,
-      endTime: this.props.date.endTime
-    };
-    this.props.saveTimeWindow(timeWindow);
+  handleRequest() {
+    console.log('save called');
+    // const timeWindow = {
+    //   date: this.props.date.date,
+    //   startTime: this.props.date.startTime,
+    //   endTime: this.props.date.endTime
+    // };
+    // this.props.saveTimeWindow(timeWindow);
+  }
+
+  renderTitle() {
+    return this.props.selectedWindow === null ? (
+      <div>
+        <h5>Select a window of availability.</h5>
+      </div>
+    ) : (
+      <div>
+        <h5>Select a time to request an hour long session</h5>
+        <p>{this.props.selectedWindow.startDate}</p>
+        <p>
+          Available from {this.props.selectedWindow.startTime} to{' '}
+          {this.props.selectedWindow.endTime}
+        </p>
+        <TimePicker
+          hintText="Select start time here"
+          onChange={(event, time) => this.handleTime(event, time)}
+        />
+        <RaisedButton
+          label="Request appointment"
+          backgroundColor="#ffff00"
+          onClick={() => this.handleRequest()}
+        />
+      </div>
+    );
   }
 
   render() {
     return (
       <div>
-        <DatePicker
-          hintText="Select window date here"
-          mode="landscape"
-          onChange={(event, date) => this.handleDate(event, date)}
-        />
-        <TimePicker
-          hintText="Select start time here"
-          onChange={(event, time) => this.handleTime(event, time, true)}
-        />
-        <TimePicker
-          hintText="Select end time here"
-          onChange={(event, time) => this.handleTime(event, time, false)}
-        />
-        <RaisedButton
-          label="Save"
-          backgroundColor="#ffff00"
-          onClick={() => this.handleSave()}
-        />
+        <div className="row">{this.renderTitle()}</div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ date, selectedWindow, auth }) {
-  return { date, selectedWindow, auth };
+function mapStateToProps({ date, selectedWindow, auth, senseiPage }) {
+  return { date, selectedWindow, auth, senseiPage };
 }
 
-export default connect(mapStateToProps, actions)(TimeSlotSelector);
+export default connect(mapStateToProps, actions)(RequestTimeSlotSelector);
 
 // renderPicker() {
 //   const windowSlots = this.props.auth ? this.props.auth.windows : [];

@@ -11,18 +11,17 @@ class SelectSchedule extends Component {
       <div>
         <div className="row card grey darken-4">
           <div className="card-content white-text">
-            <h4>
-              Set a window of availability by picking a day, a start time, and
-              an end time.
-            </h4>
+            <h4>Set your windows of availability by day</h4>
           </div>
         </div>
-        <div className="row">
-          <div className="col s4">
-            <TimeSlotSelector />
-          </div>
-          <div className="col s8">
-            <TimeSlotList />
+        <div className="row card" style={{ paddingBottom: '20' }}>
+          <div className="card-content">
+            <div className="col s4">
+              <TimeSlotSelector />
+            </div>
+            <div className="col s8">
+              <TimeSlotList />
+            </div>
           </div>
         </div>
       </div>

@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { List } from 'material-ui/List';
-import TimeListItem from './TimeListItem';
+import RequestTimeListItem from './RequestTimeListItem';
 import Divider from 'material-ui/Divider';
 
-class TimeSlotList extends Component {
+class RequestTimeSlotList extends Component {
   testFunc() {
     console.log('test func called');
   }
   renderListItems() {
-    const windowSlots = this.props.auth ? this.props.auth.windows : [];
+    //console.log(this.props.senseiPage);
+    //const windowSlots = this.props.auth ? this.props.auth.windows : [];
+    const windowSlots = this.props.senseiPage.windows;
     console.log(windowSlots);
     return _.map(windowSlots, window => {
       const windowDate = new Date(window.startDate);
@@ -39,15 +41,21 @@ class TimeSlotList extends Component {
       //const formattedEndTime = `${windowObj.endTimeHour}:${windowObj.endTimeMinutes}`;
       //console.log(formattedStartTime);
       //console.log(formattedEndTime);
+      const formattedSelectedWindow = {
+        startDate: formattedDate,
+        startTime: formattedStartTime,
+        endTime: formattedEndTime
+      };
       return (
         <div>
-          <TimeListItem
+          <RequestTimeListItem
             key={windowSlots.indexOf(window)}
             value={windowSlots.indexOf(window)}
             startDate={formattedDate}
             startTime={formattedStartTime}
             endTime={formattedEndTime}
             selectedWindow={selectedWindow}
+            formattedSelectedWindow={formattedSelectedWindow}
           />
           <Divider inset={true} />
         </div>
@@ -57,18 +65,18 @@ class TimeSlotList extends Component {
 
   render() {
     return (
-      <div style={{ maxHeight: '200', overflow: 'auto' }}>
+      <div style={{ maxHeight: '175', overflow: 'auto' }}>
         <List>{this.renderListItems()}</List>
       </div>
     );
   }
 }
 
-function mapStateToProps({ auth, selectedWindow }) {
-  return { auth, selectedWindow };
+function mapStateToProps({ auth, selectedWindow, senseiPage }) {
+  return { auth, selectedWindow, senseiPage };
 }
 
-export default connect(mapStateToProps, actions)(TimeSlotList);
+export default connect(mapStateToProps, actions)(RequestTimeSlotList);
 
 //     return (
 //       <div style={{ maxHeight: '200', overflow: 'auto' }}>

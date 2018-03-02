@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../actions';
-
+import MakeRequest from './MakeRequest';
 class SenseiPage extends Component {
   componentDidMount() {
     //console.log(this.props.senseiPage);
@@ -14,7 +14,7 @@ class SenseiPage extends Component {
     console.log(this.props.senseiPage.links);
     return _.map(this.props.senseiPage.expertise, expertise => {
       return (
-        <div key={expertise} className="chip blue darken-2 white-text">
+        <div key={expertise} className="chip chip yellow accent-2">
           {expertise}
         </div>
       );
@@ -36,7 +36,7 @@ class SenseiPage extends Component {
       console.log(link);
       return (
         <a key={Math.random()} href={link}>
-          <i className="material-icons">link</i>
+          <i className="material-icons white-text">link</i>
         </a>
       );
     });
@@ -73,9 +73,16 @@ class SenseiPage extends Component {
                   <p>Specialization</p>
                   {this.renderSpecializationChips()}
                 </div>
+                <div className="white-text">
+                  <p>Available for</p>
+                  <h4>${this.props.senseiPage.rate}/hr</h4>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <MakeRequest />
         </div>
       </div>
     );

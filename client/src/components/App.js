@@ -64,7 +64,7 @@ class App extends Component {
             />
             <div>{this.renderDrawer()}</div>
             <div style={{ paddingTop: 64 }} className={`${layout}`}>
-              <Route exact path="/" component={Landing} />
+              <Route exact path="/" component={Browse} />
               <Route
                 path="/sensei_application"
                 component={ApplicationNavigator}
