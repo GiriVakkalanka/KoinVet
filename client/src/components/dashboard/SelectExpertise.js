@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import NextButton from './NextButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 //import { Link } from 'react-router-dom';
 
@@ -18,25 +20,23 @@ class SelectExpertise extends Component {
   renderButton(expertise) {
     if (this.props.application.includes(expertise)) {
       return (
-        <button
+        <RaisedButton
           onClick={() => {
             this.handleClick(expertise);
           }}
-          className="btn blue accent-1 black-text"
-        >
-          Deselect
-        </button>
+          label="Deselect"
+          backgroundColor="#ffff00"
+        />
       );
     }
     return (
-      <button
+      <RaisedButton
         onClick={() => {
           this.handleClick(expertise);
         }}
-        className="btn yellow accent-2 black-text"
-      >
-        Select
-      </button>
+        label="Select"
+        backgroundColor="#ffff00"
+      />
     );
   }
 
@@ -90,15 +90,24 @@ class SelectExpertise extends Component {
                 </div>
               </div>
               <div className="card-action">
-                <Link
-                  to="/sensei_application/basic_info"
-                  className="btn-large yellow accent-2 black-text"
-                  onClick={() => {
-                    this.props.saveExpertise(this.props.application);
-                  }}
-                >
-                  Done
-                </Link>
+                <div className="row">
+                  <div className="col s1">
+                    <NextButton
+                      to="/"
+                      label="Prev"
+                      onClick={() =>
+                        this.props.saveExpertise(this.props.application)}
+                    />
+                  </div>
+                  <div className="col s1 offset-s1">
+                    <NextButton
+                      to="/apply/select-specialization"
+                      label="Next"
+                      onClick={() =>
+                        this.props.saveExpertise(this.props.application)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

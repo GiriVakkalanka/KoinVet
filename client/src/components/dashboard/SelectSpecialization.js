@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../actions';
 import ChipInput from 'material-ui-chip-input';
-
+import NextButton from './NextButton';
 class SelectSpecialization extends Component {
   //state = { chips: [] };
 
@@ -46,28 +46,37 @@ class SelectSpecialization extends Component {
                 </div>
               </div>
               <div className="card-action">
-                <Link
-                  to="/"
-                  className="btn-large yellow accent-2 black-text"
-                  onClick={() => {
-                    this.handleClick();
-                  }}
-                >
-                  Submit
-                </Link>
+                <div className="row">
+                  <div className="col s1">
+                    <NextButton
+                      to="/apply/select-expertise"
+                      label="Prev"
+                      onClick={() => console.log('click')}
+                    />
+                  </div>
+                  <div className="col s1 offset-s1">
+                    <NextButton
+                      to="/apply/select-links"
+                      label="Next"
+                      onClick={() => console.log('click')}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="center">
-          <ChipInput
-            value={this.props.auth ? this.props.auth.specialization : []}
-            onRequestAdd={chip => this.handleAddChip(chip)}
-            onRequestDelete={(chip, index) =>
-              this.handleDeleteChip(chip, index)}
-            hintText="Type your areas of specialization here. Press Enter after each one."
-            fullWidth={true}
-          />
+        <div className="card">
+          <div className="card-content">
+            <ChipInput
+              value={this.props.auth ? this.props.auth.specialization : []}
+              onRequestAdd={chip => this.handleAddChip(chip)}
+              onRequestDelete={(chip, index) =>
+                this.handleDeleteChip(chip, index)}
+              hintText="Type your areas of specialization here. Press Enter after each one."
+              fullWidth={true}
+            />
+          </div>
         </div>
       </div>
     );

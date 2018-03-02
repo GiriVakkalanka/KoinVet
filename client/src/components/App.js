@@ -66,9 +66,12 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/apply/basic-info"
-                component={MaterialBasicInformation}
+                path="/apply/select-specialization"
+                component={SelectSpecialization}
               />
+              <Route exact path="/apply/select-links" component={SelectLinks} />
+              <Route exact path="/apply/thanks" component={MaterialThanks} />
+
               <Route
                 path="/sensei_application"
                 component={ApplicationNavigator}

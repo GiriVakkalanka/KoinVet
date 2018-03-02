@@ -5,6 +5,8 @@ import { findDOMNode } from 'react-dom';
 //import { Link } from 'react-router-dom';
 import * as actions from '../../actions';
 import { Col, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import RaisedButton from 'material-ui/RaisedButton';
+import NextButton from './NextButton';
 
 class ProfessionalLinks extends Component {
   constructor(props) {
@@ -65,6 +67,24 @@ class ProfessionalLinks extends Component {
                   <h1>{item.headline}</h1>
                   <h3>{item.subtitle}</h3>
                 </div>
+                <div className="card-action">
+                  <div className="row">
+                    <div className="col s1">
+                      <NextButton
+                        to="/apply/select-expertise"
+                        label="Prev"
+                        onClick={() => console.log('click')}
+                      />
+                    </div>
+                    <div className="col s1 offset-s1">
+                      <NextButton
+                        to="/apply/thanks"
+                        label="Next"
+                        onClick={() => this.handleSubmit()}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -78,9 +98,12 @@ class ProfessionalLinks extends Component {
     const labels = ['Link One', 'Link Two', 'Link Three'];
     const refs = ['linkOne', 'linkTwo', 'linkThree'];
     return _.map(keys, keyLink => {
-      if (this.state[keyLink]) {
+      if (
+        this.state[keyLink] ||
+        (this.props.auth ? this.props.auth.links.length === 0 : false)
+      ) {
         return (
-          <div key={keyLink}>
+          <div className="card-content" key={keyLink}>
             <FormGroup controlId={refs[keyLink]}>
               <ControlLabel>{labels[keyLink]}</ControlLabel>
               <FormControl
@@ -89,14 +112,11 @@ class ProfessionalLinks extends Component {
                 ref={refs[keyLink]}
               />
             </FormGroup>
-            <button className="btn" onClick={() => this.handleChange(keyLink)}>
-              Save
-            </button>
           </div>
         );
       } else {
         return (
-          <div key={keyLink}>
+          <div className="card-content" key={keyLink}>
             <FormGroup controlId={refs[keyLink]}>
               <ControlLabel>{labels[keyLink]}</ControlLabel>
               <FormControl
@@ -106,15 +126,11 @@ class ProfessionalLinks extends Component {
                 value={this.props.auth ? this.props.auth.links[keyLink] : ''}
               />
             </FormGroup>
-            <button
-              className="btn"
-              onClick={() => {
-                //console.log(keyLink);
-                this.handleChange(keyLink);
-              }}
-            >
-              Edit
-            </button>
+            <RaisedButton
+              label="Edit"
+              onClick={() => this.handleChange(keyLink)}
+              backgroundColor="#ffff00"
+            />
           </div>
         );
       }
@@ -135,13 +151,7 @@ class ProfessionalLinks extends Component {
         <div>
           <Col xs={12}>
             <div> {this.renderQuestionCard(question)} </div>
-            <div> {this.renderForm()}</div>
-            <button
-              onClick={() => this.handleSubmit()}
-              className="btn-large yellow accent-2 black-text "
-            >
-              SUBMIT
-            </button>
+            <div className="card"> {this.renderForm()}</div>
           </Col>
         </div>
       </div>

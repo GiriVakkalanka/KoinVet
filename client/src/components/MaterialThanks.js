@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 //import Logo from '../images/logo15.png';
 import { Link } from 'react-router-dom';
 import * as actions from '../actions';
+import NextButton from './dashboard/NextButton';
 
 //import { Link } from 'react-router-dom';
 
@@ -25,12 +26,15 @@ class MaterialThanks extends Component {
                   <h3>
                     We will review your application and get back to you shortly
                   </h3>
-                  <Link
-                    className="btn-large yellow accent-2 black-text "
-                    to="/"
-                  >
-                    Go Back
-                  </Link>
+                  <div className="card-action">
+                    <NextButton
+                      onClick={() => console.log('click')}
+                      to="/"
+                      label="Go back"
+                    >
+                      Go Back
+                    </NextButton>
+                  </div>
                 </div>
               </div>
             </div>

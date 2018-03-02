@@ -22,15 +22,12 @@ class LoginButton extends Component {
   render() {
     return (
       <div style={{ paddingRight: 20, paddingTop: 7 }}>
-        <Link to="/apply/basic-info">
-          <RaisedButton
-            onClick={() => this.handleOpen()}
-            backgroundColor="#ffff00"
-            label={this.props.label}
-          />
-        </Link>
+        <RaisedButton
+          onClick={() => this.handleOpen()}
+          backgroundColor="#ffff00"
+          label={this.props.label}
+        />
         <Dialog
-          title="Dialog With Actions"
           open={this.state.open}
           onRequestClose={() => this.handleClose()}
         >

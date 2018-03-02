@@ -22,7 +22,7 @@ class MaterialBasicInformation extends Component {
           <div className="col s12">
             <div className="card grey darken-4">
               <div className="card-content white-text">
-                <div>
+                <div className="center-align">
                   <h1>{item.headline}</h1>
                   <h3>{item.subtitle}</h3>
                 </div>
@@ -38,22 +38,11 @@ class MaterialBasicInformation extends Component {
                     <img src={newGoogle} alt="google" />
                   </a>
                 </div>
-                <div className="row">
+                <div style={{ paddingBottom: 60 }} className="row">
                   <a href="/auth/linkedin">
                     <img src={newLinkedin} alt="linkedin" />
                   </a>
                 </div>
-              </div>
-              <div className="card-action">
-                <Link to="/" className="btn-large yellow accent-2 black-text">
-                  Back
-                </Link>
-                <Link
-                  to="/sensei_application/expertise"
-                  className="btn-large yellow accent-2 black-text right-align"
-                >
-                  Next
-                </Link>
               </div>
             </div>
           </div>
@@ -65,8 +54,8 @@ class MaterialBasicInformation extends Component {
   render() {
     const question = [
       {
-        headline: 'How would you like to login?',
-        subtitle: 'Choose a service to provide basic information.',
+        headline: '',
+        subtitle: 'Choose any service to log in.',
         number: 0
       }
     ];

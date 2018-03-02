@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import RaisedButton from 'material-ui/RaisedButton';
+import LoginButton from '../layout/LoginButton';
 
 class HitComponent extends Component {
   componentDidMount() {
@@ -35,6 +37,19 @@ class HitComponent extends Component {
       );
     });
   }
+
+  renderButton() {
+    if (this.props.auth) {
+      return (
+        <Link to={`/test/sensei/${this.props.id}`}>
+          <RaisedButton label="See availability" backgroundColor="#ffff00" />
+        </Link>
+      );
+    } else {
+      return <LoginButton label="More info" />;
+    }
+  }
+
   renderLinks() {
     return _.map(this.props.links, link => {
       console.log(link);
@@ -79,15 +94,7 @@ class HitComponent extends Component {
               <p>Links</p>
               <div>{this.renderLinks()}</div>
             </div>
-            <div className="col s3 offset-s8">
-              <Link
-                to={`/test/sensei/${this.props.id}`}
-                className="btn yellow accent-2 black-text right"
-                onClick={() => this.handleClick()}
-              >
-                See Availability
-              </Link>
-            </div>
+            <div className="col s3 offset-s8">{this.renderButton()}</div>
           </div>
         </div>
       </div>
@@ -95,8 +102,8 @@ class HitComponent extends Component {
   }
 }
 
-function mapStateToProps({ application }) {
-  return { application };
+function mapStateToProps({ application, auth }) {
+  return { application, auth };
 }
 
 export default connect(mapStateToProps, actions)(HitComponent);
