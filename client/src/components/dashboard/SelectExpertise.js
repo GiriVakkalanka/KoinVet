@@ -101,7 +101,7 @@ class SelectExpertise extends Component {
                   </div>
                   <div className="col s1 offset-s1">
                     <NextButton
-                      to="/apply/select-specialization"
+                      to="/dashboard/select-specialization"
                       label="Next"
                       onClick={() =>
                         this.props.saveExpertise(this.props.application)}

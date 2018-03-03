@@ -71,7 +71,29 @@ class App extends Component {
               />
               <Route exact path="/apply/select-links" component={SelectLinks} />
               <Route exact path="/apply/thanks" component={MaterialThanks} />
-
+              <Route exact path="/dashboard" component={AddInfo} />
+              <Route
+                exact
+                path="/dashboard/select-expertise"
+                component={SelectExpertise}
+              />
+              <Route
+                exact
+                path="/dashboard/select-specialization"
+                component={SelectSpecialization}
+              />
+              <Route
+                exact
+                path="/dashboard/select-links"
+                component={SelectLinks}
+              />
+              <Route exact path="/dashboard/add-info" component={AddInfo} />
+              <Route exact path="/dashboard/set-rate" component={SetRate} />
+              <Route
+                exact
+                path="/dashboard/set-schedule"
+                component={SelectSchedule}
+              />
               <Route
                 path="/sensei_application"
                 component={ApplicationNavigator}

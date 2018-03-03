@@ -60,17 +60,59 @@ class LayoutDrawer extends Component {
             }}
           />
           <SelectableList>
-            <ListItem
-              value={0}
-              onClick={() => this.props.history.push('/test/layout_test')}
-            >
-              Menu Item 1
+            <ListItem value={0} onClick={() => this.props.history.push('/')}>
+              Browse
             </ListItem>
+
             <ListItem
               value={1}
               onClick={() => this.props.history.push('/test/layout_test2')}
+              primaryTogglesNestedList={true}
+              initiallyOpen={true}
+              nestedItems={[
+                <ListItem
+                  value={2}
+                  onClick={() =>
+                    this.props.history.push('/dashboard/select-expertise')}
+                >
+                  Select services
+                </ListItem>,
+                <ListItem
+                  value={3}
+                  onClick={() =>
+                    this.props.history.push('/dashboard/select-specialization')}
+                >
+                  Select specialization
+                </ListItem>,
+                <ListItem
+                  value={4}
+                  onClick={() =>
+                    this.props.history.push('/dashboard/select-links')}
+                >
+                  Add links
+                </ListItem>,
+                <ListItem
+                  value={5}
+                  onClick={() => this.props.history.push('/dashboard/add-info')}
+                >
+                  Add info
+                </ListItem>,
+                <ListItem
+                  value={6}
+                  onClick={() => this.props.history.push('/dashboard/set-rate')}
+                >
+                  Set rate
+                </ListItem>,
+                <ListItem
+                  value={7}
+                  onClick={() =>
+                    this.props.history.push('/dashboard/set-schedule')}
+                >
+                  Set schedule
+                </ListItem>
+              ]}
             >
-              Menu Item 2
+              Sensei Dashboard
             </ListItem>
           </SelectableList>
         </Drawer>

@@ -71,14 +71,14 @@ class ProfessionalLinks extends Component {
                   <div className="row">
                     <div className="col s1">
                       <NextButton
-                        to="/apply/select-expertise"
+                        to="/dashboard/select-specialization"
                         label="Prev"
                         onClick={() => console.log('click')}
                       />
                     </div>
                     <div className="col s1 offset-s1">
                       <NextButton
-                        to="/apply/thanks"
+                        to="/dashboard/add-info"
                         label="Next"
                         onClick={() => this.handleSubmit()}
                       />

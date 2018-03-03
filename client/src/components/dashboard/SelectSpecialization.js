@@ -49,14 +49,14 @@ class SelectSpecialization extends Component {
                 <div className="row">
                   <div className="col s1">
                     <NextButton
-                      to="/apply/select-expertise"
+                      to="/dashboard/select-expertise"
                       label="Prev"
                       onClick={() => console.log('click')}
                     />
                   </div>
                   <div className="col s1 offset-s1">
                     <NextButton
-                      to="/apply/select-links"
+                      to="/dashboard/select-links"
                       label="Next"
                       onClick={() => console.log('click')}
                     />
