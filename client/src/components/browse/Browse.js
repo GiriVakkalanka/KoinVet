@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import HitComponent from './HitComponent';
 //import Logo from '../';
+//update
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch/dom';
 
 const Sidebar = () => <div className="sidebar" />;
